@@ -83,3 +83,36 @@ Parse.Cloud.define("GetBalance", function (request, response) {
 		}
 	});
 });
+
+Parse.Cloud.define("GetAccountDetails", function (request, response) {
+
+	var soap = '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org"> <soap:Header> <tem:subHeader> <tem:UniqueId>SB0000001</tem:UniqueId> <tem:ServiceRequestId>MW.HKN</tem:ServiceRequestId> <tem:ServiceRequestVersion>1.0</tem:ServiceRequestVersion> <tem:ChannelId>HKN</tem:ChannelId> </tem:subHeader> </soap:Header> <soap:Body> <tem:SMSBankingInfoRequest> <tem:SearchFilterString>MOBILE</tem:SearchFilterString> <tem:MobileNumber>MOB0005</tem:MobileNumber> </tem:SMSBankingInfoRequest> </soap:Body> </soap:Envelope>';
+	Parse.Cloud.httpRequest({
+		method: 'POST',
+		url: 'http://hackathon.axisbank.com:8523/SMSBankingMWService',
+		headers: {
+			'Content-Type': 'text/xml'
+		},
+		body: soap,
+		success: function (httpResponse) {
+			var xmlreader = require('cloud/xml-reader.js');
+			var temp = httpResponse.text;
+			temp = temp.replace(/:/g, '');
+			var summary = [];
+			xmlreader.read(temp, function (err, res) {
+				if (err) return console.log(err);
+				var abcd = res.NS1Envelope.NS1Body.NS3SMSBankingInfoResponse.NS3SMSBankingInfoDetails;
+				summary.push(abcd.NS3CustomerID.text());
+				summary.push(abcd.NS3AccountNumber.text());
+				summary.push(abcd.NS3MobileNumber.text());
+				summary.push(abcd.NS3Relation.text());
+				summary.push(abcd.NS3ModeOfOperation.text());
+				summary.push(abcd.NS3DeletionFlag.text());
+			});
+			response.success(summary);
+		},
+		error: function (httpResponse) {
+			response.error(httpResponse.message);
+		}
+	});
+});
