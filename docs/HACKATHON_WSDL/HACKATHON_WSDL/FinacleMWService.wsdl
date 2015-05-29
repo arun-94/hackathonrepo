@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="FinacleMWService"
+	targetNamespace="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="FinacleMWServiceBinding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+
+	<wsdl:types>
+		<!-- <xsd:schema targetNamespace="http://tempuri.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" 
+			xmlns:mrm="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd" 
+			/> </xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org"
+			xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+			<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+				type="mrm:t_Header" />
+			<xsd:complexType name="t_Header">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="mrm:UniqueId" />
+					<xsd:element ref="mrm:ServiceRequestId" />
+					<xsd:element ref="mrm:ServiceRequestVersion" />
+					<xsd:element ref="mrm:ChannelId" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="LoanSystem" type="xsd:string" />
+			<xsd:element name="CreditSystem" type="xsd:string" />
+			<xsd:element name="CoreSystem" type="xsd:string" />
+			<xsd:element name="UniqueId" type="xsd:string" />
+			<xsd:element name="ServiceRequestId" type="xsd:string" />
+			<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+			<xsd:element name="ChannelId" type="xsd:string" />
+
+
+			<xsd:element name="CustomerIdentifier" type="xsd:string" />
+			<xsd:element name="AccountId" type="xsd:string" />
+
+
+			<xsd:element name="creditCardNo" type="xsd:string" />
+			<xsd:element name="loanAccId" type="xsd:string" />
+			<xsd:element name="AddressType" type="xsd:string" />
+			<xsd:element name="AddressLine1" type="xsd:string" />
+			<xsd:element name="AddressLine2" type="xsd:string" />
+			<xsd:element name="AddressLine3" type="xsd:string" />
+			<xsd:element name="AddressLine4" type="xsd:string" />
+			<xsd:element name="City" type="xsd:string" />
+			<xsd:element name="State" type="xsd:string" />
+			<xsd:element name="ZipCode" type="xsd:string" />
+			<xsd:element name="Country" type="xsd:string" />
+			<xsd:element name="Mailing" type="xsd:string" />
+			<xsd:element name="PhoneNumber" type="xsd:string" />
+			<xsd:element name="MobileNumber" type="xsd:string" />
+			<xsd:element name="EmailAddress" type="xsd:string" />
+			<xsd:element name="PanNumber" type="xsd:string" />
+			<xsd:element name="AadharNumber" type="xsd:string" />
+			<xsd:element name="ReasonCode" type="xsd:string" />
+			<xsd:element name="CountryCode" type="xsd:string" />
+			<xsd:element name="STDCode" type="xsd:string" />
+			<xsd:element name="DOB" type="xsd:string" />
+			<xsd:element name="PanStatus" type="xsd:string" />
+			<xsd:element name="status" type="xsd:string" />
+
+
+
+
+			<xsd:complexType name="KYCDetailReq">
+				<xsd:sequence>
+					<xsd:element ref="mrm:CoreSystem" />
+					<xsd:element ref="mrm:LoanSystem" />
+					<xsd:element ref="mrm:CreditSystem" />
+					<xsd:element ref="mrm:CustomerIdentifier" />
+					<xsd:element minOccurs="0" ref="mrm:AccountId" />
+					<xsd:element minOccurs="0" ref="mrm:creditCardNo" />
+					<xsd:element minOccurs="0" ref="mrm:loanAccId" />
+					<xsd:element minOccurs="0" ref="mrm:AddressType" />
+					<xsd:element minOccurs="0" ref="mrm:AddressLine1" />
+					<xsd:element minOccurs="0" ref="mrm:AddressLine2" />
+					<xsd:element minOccurs="0" ref="mrm:AddressLine3" />
+					<xsd:element minOccurs="0" ref="mrm:AddressLine4" />
+					<xsd:element minOccurs="0" ref="mrm:City" />
+					<xsd:element minOccurs="0" ref="mrm:State" />
+					<xsd:element minOccurs="0" ref="mrm:ZipCode" />
+					<xsd:element minOccurs="0" ref="mrm:Country" />
+					<xsd:element minOccurs="0" ref="mrm:Mailing" />
+					<xsd:element minOccurs="0" ref="mrm:PhoneNumber" />
+					<xsd:element minOccurs="0" ref="mrm:MobileNumber" />
+					<xsd:element minOccurs="0" ref="mrm:EmailAddress" />
+					<xsd:element minOccurs="0" ref="mrm:PanNumber" />
+					<xsd:element minOccurs="0" ref="mrm:AadharNumber" />
+					<xsd:element minOccurs="0" ref="mrm:ReasonCode" />
+					<xsd:element minOccurs="0" ref="mrm:CountryCode" />
+					<xsd:element minOccurs="0" ref="mrm:STDCode" />
+					<xsd:element minOccurs="0" ref="mrm:DOB" />
+					<xsd:element minOccurs="0" ref="mrm:PanStatus" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="KYCDetailResp">
+				<xsd:sequence>
+					<xsd:element ref="mrm:CustomerIdentifier" />
+					<xsd:element ref="mrm:status" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="KYCDetailReq"
+				type="mrm:KYCDetailReq" />
+			<xsd:element ibmSchExtn:docRoot="true" name="KYCDetailResp"
+				type="mrm:KYCDetailResp" />
+
+
+		</xsd:schema>
+
+
+	</wsdl:types>
+
+
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="tns:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+
+
+	<wsdl:message name="updateKYC_in">
+		<wsdl:part element="tns:KYCDetailReq" name="KYCUpdateRequest" />
+	</wsdl:message>
+	<wsdl:message name="updateKYC_out">
+		<wsdl:part element="tns:KYCDetailResp" name="KYCUpdateResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="FinacleMWServicePort">
+
+
+
+
+
+		<wsdl:operation name="updateDetails">
+			<wsdl:input message="tns:updateKYC_in" name="updateKYC_Input" />
+			<wsdl:output message="tns:updateKYC_out" name="updateKYC_Output" />
+		</wsdl:operation>
+
+
+	</wsdl:portType>
+
+	<wsdl:binding name="FinacleMWServiceBinding" type="tns:FinacleMWServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+
+
+		<wsdl:operation name="updateDetails">
+			<soap:operation soapAction="http://tempuri.org/updateKYC" />
+			<wsdl:input name="updateKYC_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateKYC_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="FinacleMWService">
+		<wsdl:port binding="tns:FinacleMWServiceBinding" name="FinacleMWServicePort">
+			<soap:address location="http://hackathon.axisbank.com:8523/FinacleMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

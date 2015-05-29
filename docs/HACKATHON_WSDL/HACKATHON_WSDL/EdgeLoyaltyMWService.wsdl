@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	name="EdgeLoyaltyMWService" targetNamespace="http://tempuri.org/EdgeLoyaltyMWService"
+	xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://tempuri.org/EdgeLoyaltyMWService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="EdgeLoyaltyMWServiceSOAP_HTTP_Binding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+	<wsdl:types>
+
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://tempuri.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:mrm="http://tempuri.org/EdgeLoyaltyMWService" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<xsd:element name="UniqueId" type="xsd:string" />
+	<xsd:element name="ServiceRequestId" type="xsd:string" />
+	<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+	<xsd:element name="ChannelId" type="xsd:string" />
+	<xsd:complexType name="t_Header">
+		<xsd:sequence maxOccurs="1" minOccurs="1">
+			<xsd:element ref="oldtns1:UniqueId" />
+			<xsd:element ref="oldtns1:ServiceRequestId" />
+			<xsd:element ref="oldtns1:ServiceRequestVersion" />
+			<xsd:element ref="oldtns1:ChannelId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+		type="oldtns1:t_Header" />
+	<xsd:element name="CatalogueName" type="xsd:string" />
+	<xsd:element name="CatalogueProduct" type="xsd:string" />
+	<xsd:element name="Points" type="xsd:string" />
+	<xsd:element name="RegisteredFlag" type="xsd:string" />
+	<xsd:element name="ResponseCode" type="xsd:string" />
+	<xsd:element name="ResponseDescription" type="xsd:string" />
+	<xsd:element name="CustomerId" type="xsd:string" />
+	<xsd:element name="AvailablePoints" type="xsd:string" />
+	<xsd:element name="RedeemPoints" type="xsd:int" />
+	<xsd:element name="ViewCatalogueReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					ref="oldtns1:CatalogueName" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ViewPointsReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					ref="oldtns1:CustomerId" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RedeemPointsReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					ref="oldtns1:CustomerId" />
+				<xsd:element maxOccurs="1" minOccurs="1"
+					ref="oldtns1:RedeemPoints" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RedeemPointsRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:CustomerId" />
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:RegisteredFlag" />
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:AvailablePoints" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ViewPointsRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:CustomerId" />
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:RegisteredFlag" />
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:AvailablePoints" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ViewCatalogueRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:CatalogueName" />
+				<xsd:element maxOccurs="1" minOccurs="0"
+					ref="oldtns1:CatalogueProduct" />
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Points" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="t_ViewCatalogueRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ResponseCode" />
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ResponseDescription" />
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				ref="oldtns1:ViewCatalogueRsp" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_RedeemPointsReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:RedeemPointsReq" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_RedeemPointsRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ResponseCode" />
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ResponseDescription" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:RedeemPointsRsp" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ViewPointsRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ResponseCode" />
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ResponseDescription" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:ViewPointsRsp" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ViewPointsReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ViewPointsReq" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ViewCatalogueReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1"
+				ref="oldtns1:ViewCatalogueReq" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="RedeemPointsRequest"
+		type="oldtns1:t_RedeemPointsReq" />
+	<xsd:element ibmSchExtn:docRoot="true" name="RedeemPointsResponse"
+		type="oldtns1:t_RedeemPointsRsp" />
+	<xsd:element ibmSchExtn:docRoot="true" name="ViewPointsRequest"
+		type="oldtns1:t_ViewPointsReq" />
+	<xsd:element ibmSchExtn:docRoot="true" name="ViewPointsResponse"
+		type="oldtns1:t_ViewPointsRsp" />
+	<xsd:element ibmSchExtn:docRoot="true" name="CatalogueViewRequest"
+		type="oldtns1:t_ViewCatalogueReq" />
+	<xsd:element ibmSchExtn:docRoot="true" name="CatalogueViewResponse"
+		type="oldtns1:t_ViewCatalogueRsp" />
+</xsd:schema>
+
+	</wsdl:types>
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+	<wsdl:message name="CatalogueView_in">
+		<wsdl:part element="oldtns1:CatalogueViewRequest" name="CatalgoueViewRequest" />
+	</wsdl:message>
+	<wsdl:message name="CatalogueView_out">
+		<wsdl:part element="oldtns1:CatalogueViewResponse" name="CatalgoueViewResponse" />
+	</wsdl:message>
+
+
+
+	<wsdl:message name="ViewPoints_in">
+		<wsdl:part element="oldtns1:ViewPointsRequest" name="ViewPointsRequest" />
+	</wsdl:message>
+	<wsdl:message name="ViewPoint_out">
+		<wsdl:part element="oldtns1:ViewPointsResponse" name="ViewPointsResponse" />
+	</wsdl:message>
+
+
+
+
+	<wsdl:message name="RedeemPoints_in">
+		<wsdl:part element="oldtns1:RedeemPointsRequest" name="RedeemPointsRequest" />
+	</wsdl:message>
+	<wsdl:message name="RedeemPoints_out">
+		<wsdl:part element="oldtns1:RedeemPointsResponse" name="RedeemPointsResponse" />
+	</wsdl:message>
+
+
+
+
+
+	<wsdl:portType name="CatalogueViewPortType">
+
+		<wsdl:operation name="ViewCatalogue">
+			<wsdl:input message="tns:CatalogueView_in" name="CatalogueView_Input" />
+			<wsdl:output message="tns:CatalogueView_out" name="CatalogueView_Output" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="ViewPoints">
+			<wsdl:input message="tns:ViewPoints_in" name="ViewPoints_Input" />
+			<wsdl:output message="tns:ViewPoint_out" name="ViewPoints_Output" />
+		</wsdl:operation>
+
+
+
+		<wsdl:operation name="RedeemPoints">
+			<wsdl:input message="tns:RedeemPoints_in" name="RedeemPoints_Input" />
+			<wsdl:output message="tns:RedeemPoints_out" name="RedeemPoints_Output" />
+		</wsdl:operation>
+
+
+
+
+	</wsdl:portType>
+
+	<wsdl:binding name="EdgeLoyaltyMWServiceSOAP_HTTP_Binding"
+		type="tns:CatalogueViewPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="ViewCatalogue">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CatalogueView_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="CatalgoueViewRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CatalogueView_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="CatalgoueViewResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+
+
+		<wsdl:operation name="ViewPoints">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ViewPoints_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="ViewPointsRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ViewPoints_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="ViewPointsResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="RedeemPoints">
+			<soap:operation soapAction="" />
+			<wsdl:input name="RedeemPoints_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="RedeemPointsRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="RedeemPoints_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="RedeemPointsResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+
+
+	</wsdl:binding>
+
+	<wsdl:service name="EdgeLoyaltyMWService">
+		<wsdl:port binding="tns:EdgeLoyaltyMWServiceSOAP_HTTP_Binding"
+			name="IBAuthenticationESBServicePort">
+			<soap:address location="http://hackathon.axisbank.com:8523/EdgeLoyaltyMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

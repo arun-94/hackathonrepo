@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="NEFTInqMWService"
+	targetNamespace="http://tempuri.org/NEFTInqMWService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://tempuri.org/NEFTInqMWService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true" name="NEFTInquiry"
+					originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+
+	<wsdl:types>
+		<!-- <xsd:schema targetNamespace="http://tempuri.org" xmlns:mrm="http://tempuri.org/NEFTInqMWService" 
+			xmlns:tns="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd" 
+			/> </xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/NEFTInqMWService"
+			xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+			<xsd:element name="ErrorId" type="xsd:string" />
+			<xsd:element name="ErrorDescription" type="xsd:string" />
+
+			<xsd:element ibmSchExtn:docRoot="true" name="NEFTPaymentInquiry">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element ref="oldtns1:PaymentDtls" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ibmSchExtn:docRoot="true"
+				name="NEFTPaymentInquiryResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="oldtns1:RemitterDetails" />
+						<xsd:element ref="oldtns1:BeneficiaryDetails" />
+
+
+						<xsd:element ref="oldtns1:TransactionStatus" />
+						<xsd:element ref="oldtns1:TransactionResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+
+			<xsd:element name="MSG_TYP" type="xsd:string" />
+			<xsd:element name="ChannelId" type="xsd:string" />
+			<xsd:element name="INIT_MU_ID" type="xsd:string" />
+			<xsd:element name="RPR_FLG" type="xsd:integer" />
+			<xsd:element name="UniqueIdentfier" type="xsd:string" />
+			<xsd:element name="NUM_REM" type="xsd:integer" />
+			<xsd:element name="NUM_PYMNT" type="xsd:integer" />
+			<xsd:element name="TOT_AMT" type="xsd:decimal" />
+			<xsd:element name="Currency" type="xsd:string" />
+			<xsd:element name="StatusFlag" type="xsd:integer" />
+			<xsd:element name="MessageVersion" type="xsd:string" />
+			<xsd:element name="TRGT_CHNL_ID" type="xsd:string" />
+			<xsd:element name="TRGT_MU_ID" type="xsd:string" />
+			<xsd:element name="TXN_MODE" type="xsd:integer" />
+			<xsd:element name="RESUB" type="xsd:string" />
+			<xsd:element name="MIRN" type="xsd:string" />
+			<xsd:element name="RSRVD_NUM1" type="xsd:integer" />
+			<xsd:element name="RSRVD_NUM2" type="xsd:integer" />
+			<xsd:element name="RSRVD_NUM3" type="xsd:decimal" />
+			<xsd:element name="RSRVD_STR1" type="xsd:string" />
+			<xsd:element name="RSRVD_STR2" type="xsd:string" />
+			<xsd:element name="RSRVD_STR3" type="xsd:string" />
+
+			<xsd:element name="RequestReferenceNumber" type="xsd:string" />
+
+			<xsd:element name="InternalFID" type="xsd:string" />
+
+			<xsd:element name="MBRSequenceNumber" type="xsd:integer" />
+			<xsd:element name="JOB_RUN_ID" type="xsd:integer" />
+			<xsd:element name="Bch_ver" type="xsd:integer" />
+			<xsd:element name="PaymentDtls">
+				<xsd:complexType>
+					<xsd:sequence>
+
+
+
+						<xsd:element minOccurs="1" ref="oldtns1:UniqueIdentfier" />
+
+
+
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RequestReference" type="xsd:string" />
+			<xsd:element name="ORIG_InternalReferenceNumber" type="xsd:string" />
+			<xsd:element name="OU_ID" type="xsd:string" />
+			<xsd:element name="UTRNumber" type="xsd:string" />
+			<xsd:element name="RemitterDetails">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterReference" />
+						<xsd:element minOccurs="0" ref="oldtns1:OuterIdentifer" />
+						<xsd:element minOccurs="0" ref="oldtns1:OrderDate" />
+						<xsd:element minOccurs="0" ref="oldtns1:RequestValueDate" />
+						<xsd:element minOccurs="1" ref="oldtns1:Direction" />
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterAccountNumber" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:RemitterAccountCurrency" />
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterName" />
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterAddressLine1" />
+						<xsd:element minOccurs="0" ref="oldtns1:RemitterAddressLine2" />
+						<xsd:element minOccurs="0" ref="oldtns1:RemitterAddressLine3" />
+						<xsd:element minOccurs="0" ref="oldtns1:RemitterAddressLine4" />
+						<xsd:element minOccurs="0" ref="oldtns1:Amount" />
+						<xsd:element minOccurs="0" ref="oldtns1:Currency" />
+
+						<xsd:element minOccurs="0" ref="oldtns1:ExchangeRate" />
+						<xsd:element minOccurs="0" ref="oldtns1:OrderInstituteName" />
+						<xsd:element minOccurs="0" ref="oldtns1:RemitterAccountType" />
+						<xsd:element minOccurs="0" ref="oldtns1:InternalFID" />
+						<xsd:element minOccurs="0" ref="oldtns1:MBRSequenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:ExternalReferenceFlag" />
+						<xsd:element minOccurs="0" ref="oldtns1:RemitterVersion" />
+
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="MSF_REF" type="xsd:string" />
+			<xsd:element name="BTCH_BK" type="xsd:integer" />
+			<xsd:element name="PRIORITY_CD" type="xsd:integer" />
+			<xsd:element name="TransactionReferenceNumber" type="xsd:string" />
+			<xsd:element name="RequestValueDate" type="xsd:string" />
+			<xsd:element name="Direction" type="xsd:integer" />
+			<xsd:element name="RemitterAccountNumber" type="xsd:string" />
+			<xsd:element name="RemitterAccountCurrency" type="xsd:string" />
+			<xsd:element name="ACNT_PREVLDT" type="xsd:integer" />
+			<xsd:element name="ACNT_MU_ID" type="xsd:string" />
+			<xsd:element name="ACNT_BRNCH_PREVLDT" type="xsd:integer" />
+			<xsd:element name="RemitterName" type="xsd:string" />
+			<xsd:element name="REM_CUST_REF" type="xsd:string" />
+			<xsd:element name="RemitterAddressLine1" type="xsd:string" />
+			<xsd:element name="RemitterAddressLine2" type="xsd:string" />
+			<xsd:element name="RemitterAddressLine3" type="xsd:string" />
+			<xsd:element name="RemitterAddressLine4" type="xsd:string" />
+			<xsd:element name="REM_CUST_EML" type="xsd:string" />
+			<xsd:element name="REM_CUST_MBL" type="xsd:string" />
+			<xsd:element name="REM_CUST_PHN" type="xsd:string" />
+			<xsd:element name="REM_CUST_FAX" type="xsd:string" />
+			<xsd:element name="REM_CUST_CTRY" type="xsd:string" />
+			<xsd:element name="WLKIN_CUST_FLG" type="xsd:integer" />
+			<xsd:element name="ORDRNG_CUST_NM" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_REF" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_ADRS_LINE1" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_ADRS_LINE2" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_ADRS_LINE3" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_ADRS_LINE4" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_ACNT" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_EML" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_MBL" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_PHN" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_FAX" type="xsd:string" />
+			<xsd:element name="ORDRNG_CUST_CTRY" type="xsd:string" />
+			<xsd:element name="Amount" type="xsd:decimal" />
+			<xsd:element name="CASH_BLCK_REF" type="xsd:string" />
+			<xsd:element name="PreBookFlag" type="xsd:integer" />
+			<xsd:element name="CNTR_AMT" type="xsd:decimal" />
+			<xsd:element name="ORD_INST_ACNT_REF" type="xsd:string" />
+			<xsd:element name="ORD_INST_REF_TYP" type="xsd:integer" />
+			<xsd:element name="ORD_INST_REF" type="xsd:string" />
+			<xsd:element name="OrderInstituteName" type="xsd:string" />
+			<xsd:element name="ORD_INST_ADRS_LN1" type="xsd:string" />
+			<xsd:element name="ORD_INST_ADRS_LN2" type="xsd:string" />
+			<xsd:element name="ORD_INST_ADRS_LN3" type="xsd:string" />
+			<xsd:element name="ORD_INST_ADRS_LN4" type="xsd:string" />
+			<xsd:element name="SC_ACNT_REF" type="xsd:string" />
+			<xsd:element name="SC_REF_TYP" type="xsd:integer" />
+			<xsd:element name="SC_REF" type="xsd:string" />
+			<xsd:element name="SC_NM" type="xsd:string" />
+			<xsd:element name="SC_ADRS_LINE1" type="xsd:string" />
+			<xsd:element name="SC_ADRS_LINE2" type="xsd:string" />
+			<xsd:element name="SC_ADRS_LINE3" type="xsd:string" />
+			<xsd:element name="SC_ADRS_LINE4" type="xsd:string" />
+			<xsd:element name="RC_ACNT_REF" type="xsd:string" />
+			<xsd:element name="RC_REF_TYP" type="xsd:integer" />
+			<xsd:element name="RC_REF" type="xsd:string" />
+			<xsd:element name="RC_NM" type="xsd:string" />
+			<xsd:element name="RC_ADRS_LINE1" type="xsd:string" />
+			<xsd:element name="RC_ADRS_LINE2" type="xsd:string" />
+			<xsd:element name="RC_ADRS_LINE3" type="xsd:string" />
+			<xsd:element name="RC_ADRS_LINE4" type="xsd:string" />
+			<xsd:element name="EventStatus" type="xsd:integer" />
+			<xsd:element name="ORIG_ID" type="xsd:string" />
+			<xsd:element name="RemitterAccountType" type="xsd:integer" />
+			<xsd:element name="ORDRNG_CUST_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="ORD_INST_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="SC_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="RC_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="SNDNG_INST_NM" type="xsd:string" />
+			<xsd:element name="SNDNG_INST_REF" type="xsd:string" />
+			<xsd:element name="SNDNG_INST_REF_TYP" type="xsd:integer" />
+			<xsd:element name="TXN_TYP" type="xsd:string" />
+			<xsd:element name="REM_CUST_REF_TYP" type="xsd:integer" />
+			<xsd:element name="ORDRNG_CUST_REF_TYP" type="xsd:integer" />
+			<xsd:element name="CollectionType" type="xsd:integer" />
+			<xsd:element name="INDRCT_MEM_FLG" type="xsd:integer" />
+			<xsd:element name="CIF_ID" type="xsd:string" />
+			<xsd:element name="DIV_CODE" type="xsd:string" />
+			<xsd:element name="CHARTX" type="xsd:string" />
+			<xsd:element name="ExternalReferenceFlag" type="xsd:integer" />
+			<xsd:element name="CSHBLK_RQRD_FLG" type="xsd:integer" />
+			<xsd:element name="PP_ACNT_SEQ_ID" type="xsd:integer" />
+			<xsd:element name="INSTR_CODE" type="xsd:string" />
+			<xsd:element name="EBP_BRNCH_REF" type="xsd:string" />
+			<xsd:element name="EBP_REF" type="xsd:integer" />
+			<xsd:element name="EBP_SRC" type="xsd:string" />
+			<xsd:element name="EBP_UTR" type="xsd:string" />
+			<xsd:element name="EBP_DATE" type="xsd:string" />
+			<xsd:element name="INSTRMNT_ID" type="xsd:integer" />
+			<xsd:element name="RemitterVersion" type="xsd:integer" />
+			<xsd:element name="BeneficiaryDetails">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterReference" />
+						<xsd:element minOccurs="1" ref="oldtns1:OuterIdentifer" />
+						<xsd:element minOccurs="0" ref="oldtns1:OrderDate" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:TransactionReferenceNumber" />
+
+
+						<xsd:element minOccurs="0" ref="oldtns1:RequestValueDate" />
+						<xsd:element minOccurs="0" ref="oldtns1:Direction" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryAccountNumber" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryAccountCurrency" />
+						<xsd:element minOccurs="0" ref="oldtns1:BeneficiaryName" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryAddressLine1" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryAddressLine2" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryAddressLine3" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryAddressLine4" />
+						<xsd:element minOccurs="0" ref="oldtns1:BeneficiaryEmailId" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:BeneficiaryMobileNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:Amount" />
+						<xsd:element minOccurs="0" ref="oldtns1:Currency" />
+
+						<xsd:element minOccurs="0" ref="oldtns1:ExchangeRate" />
+						<xsd:element minOccurs="0" ref="oldtns1:IFSCCode" />
+
+						<xsd:element minOccurs="0" ref="oldtns1:RecieverInfoLine1" />
+						<xsd:element minOccurs="0" ref="oldtns1:RecieverInfoLine2" />
+						<xsd:element minOccurs="0" ref="oldtns1:StatusFlag" />
+						<xsd:element minOccurs="0" ref="oldtns1:EventStatus" />
+						<xsd:element minOccurs="0" ref="oldtns1:CollectionType" />
+						<xsd:element minOccurs="0" ref="oldtns1:ManStartDate" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:InternalDetailReference" />
+						<xsd:element minOccurs="0" ref="oldtns1:StallmentWithBank" />
+						<xsd:element minOccurs="1" ref="oldtns1:InternalFID" />
+						<xsd:element minOccurs="1" ref="oldtns1:MBRSequenceNumber" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:ForwardChannelSequence" />
+						<xsd:element minOccurs="0" ref="oldtns1:ClearType" />
+						<xsd:element minOccurs="0" ref="oldtns1:SequenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:CreditValueDate" />
+						<xsd:element minOccurs="0" ref="oldtns1:CreditExecutionDate" />
+						<xsd:element minOccurs="0" ref="oldtns1:UTRNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:TaxAmount" />
+						<xsd:element minOccurs="0" ref="oldtns1:BenefittorVersion" />
+
+
+
+						<xsd:element minOccurs="0" ref="oldtns1:TXN_STD_ERROR_ID" />
+						<xsd:element minOccurs="0" ref="oldtns1:TXN_STD_ERROR_DESC" />
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BeneficiaryAccountNumber">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[0,9]{16}" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="BEN_ACNT_BRNCH_PREVLDT" type="xsd:integer" />
+			<xsd:element name="BeneficiaryAccountCurrency">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[A-Z]{3,3}" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="BeneficiaryName">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[A-Za-z]" />
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="70" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="BEN_REF" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine1" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine2" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine3" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine4" type="xsd:string" />
+			<xsd:element name="BeneficiaryEmailId" type="xsd:string" />
+			<xsd:element name="BeneficiaryMobileNumber">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[0-9+-]{10,30}" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="BEN_PHN" type="xsd:string" />
+			<xsd:element name="BEN_FAX" type="xsd:string" />
+			<xsd:element name="BEN_CTRY" type="xsd:string" />
+			<xsd:element name="ClearingChannelID" type="xsd:integer" />
+			<xsd:element name="CLRNG_BRNCH_REF" type="xsd:string" />
+			<xsd:element name="PURP" type="xsd:string" />
+			<xsd:element name="ExchangeRate" type="xsd:decimal" />
+			<xsd:element name="CHRG_OPTN" type="xsd:integer" />
+			<xsd:element name="BEN_BNK_ACNT_REF" type="xsd:string" />
+			<xsd:element name="BEN_BNK_REF_TYP" type="xsd:integer" />
+			<xsd:element name="IFSCCode" type="xsd:string" />
+			<xsd:element name="BEN_BNK_MU_ID" type="xsd:string" />
+			<xsd:element name="BEN_BNK_PREVLDT" type="xsd:integer" />
+			<xsd:element name="BEN_BNK_NM" type="xsd:string" />
+			<xsd:element name="BEN_BNK_ADRS_LINE1" type="xsd:string" />
+			<xsd:element name="BEN_BNK_ADRS_LINE2" type="xsd:string" />
+			<xsd:element name="BEN_BNK_ADRS_LINE3" type="xsd:string" />
+			<xsd:element name="BEN_BNK_ADRS_LINE4" type="xsd:string" />
+			<xsd:element name="BEN_BNK_CTRY" type="xsd:string" />
+			<xsd:element name="INTRMDRY_ACNT_REF" type="xsd:string" />
+			<xsd:element name="INTRMDRY_REF_TYP" type="xsd:integer" />
+			<xsd:element name="INTRMDRY_REF" type="xsd:string" />
+			<xsd:element name="INTRMDRY_ADRS_LINE1" type="xsd:string" />
+			<xsd:element name="INTRMDRY_ADRS_LINE2" type="xsd:string" />
+			<xsd:element name="INTRMDRY_ADRS_LINE3" type="xsd:string" />
+			<xsd:element name="INTRMDRY_ADRS_LINE4" type="xsd:string" />
+			<xsd:element name="INTRMDRY_CTRY" type="xsd:string" />
+			<xsd:element name="RecieverInfoLine1" type="xsd:string" />
+			<xsd:element name="RecieverInfoLine2" type="xsd:string" />
+			<xsd:element name="RCVR_INFO_LINE3" type="xsd:string" />
+			<xsd:element name="RCVR_INFO_LINE4" type="xsd:string" />
+			<xsd:element name="RCVR_INFO_LINE5" type="xsd:string" />
+			<xsd:element name="RCVR_INFO_LINE6" type="xsd:string" />
+			<xsd:element name="STLMNT_RMRKS_LINE1" type="xsd:string" />
+			<xsd:element name="STLMNT_RMRKS_LINE2" type="xsd:string" />
+			<xsd:element name="STLMNT_RMRKS_LINE3" type="xsd:string" />
+			<xsd:element name="STLMNT_RMRKS_LINE4" type="xsd:string" />
+			<xsd:element name="REQ_EXE_TM" type="xsd:string" />
+			<xsd:element name="BEN_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="BEN_BNK_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="INTRMDRY_ACNT_TYP" type="xsd:integer" />
+			<xsd:element name="INTRMDRY_NM" type="xsd:string" />
+			<xsd:element name="BEN_REF_TYP" type="xsd:integer" />
+			<xsd:element name="ULT_BEN_NM" type="xsd:string" />
+			<xsd:element name="ULT_BEN_REF" type="xsd:string" />
+			<xsd:element name="ULT_BEN_REF_TYP" type="xsd:integer" />
+			<xsd:element name="CHQ_ISSUE" type="xsd:integer" />
+			<xsd:element name="ManStartDate" type="xsd:string" />
+			<xsd:element name="InternalDetailReference" type="xsd:integer" />
+			<xsd:element name="StallmentWithBank" type="xsd:integer" />
+			<xsd:element name="ForwardChannelSequence" type="xsd:integer" />
+			<xsd:element name="ClearType" type="xsd:integer" />
+			<xsd:element name="CreditValueDate" type="xsd:string" />
+			<xsd:element name="CreditExecutionDate" type="xsd:string" />
+			<xsd:element name="TaxAmount">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:minInclusive value="0" />
+						<xsd:fractionDigits value="2" />
+						<xsd:totalDigits value="21" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CHRG_CRNCY" type="xsd:string" />
+			<xsd:element name="CHRG_AMT" type="xsd:decimal" />
+			<xsd:element name="GEO_COVER" type="xsd:integer" />
+			<xsd:element name="ORIG_TXN_REF_TYP" type="xsd:integer" />
+			<xsd:element name="ORIG_TXN_REF_NUM" type="xsd:integer" />
+			<xsd:element name="ORIG_TXN_REF_SQNC" type="xsd:integer" />
+			<xsd:element name="PYMNT_TYP" type="xsd:integer" />
+			<xsd:element name="CR_MRKTNG_CODE" type="xsd:string" />
+			<xsd:element name="DR_MRKTNG_CODE" type="xsd:string" />
+			<xsd:element name="ULT_BEN_ADRS_LN1" type="xsd:string" />
+			<xsd:element name="ULT_BEN_ADRS_LN2" type="xsd:string" />
+			<xsd:element name="ULT_BEN_ADRS_LN3" type="xsd:string" />
+			<xsd:element name="ULT_BEN_ADRS_LN4" type="xsd:string" />
+			<xsd:element name="ULT_BEN_ACNT_IDNTFR" type="xsd:string" />
+			<xsd:element name="ULT_BEN_ACNT_IDNTFR_TYP" type="xsd:integer" />
+			<xsd:element name="TXN_STD_ERROR_ID" type="xsd:string" />
+			<xsd:element name="TXN_STD_ERROR_DESC" type="xsd:string" />
+			<xsd:element name="BenefittorVersion" type="xsd:integer" />
+			<xsd:simpleType name="Max70Text">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1" />
+					<xsd:maxLength value="70" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="Max35Text">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1" />
+					<xsd:maxLength value="35" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:element name="RemitterReference" type="xsd:string" />
+			<xsd:element name="OuterIdentifer" type="xsd:string" />
+			<xsd:element name="OrderDate" type="xsd:string" />
+			<xsd:element name="CHQ_NUM" type="xsd:string" />
+			<xsd:element name="CHQ_FRM_NM" type="xsd:string" />
+			<xsd:element name="CHQ_FRM_CNTRY" type="xsd:string" />
+			<xsd:element name="CHQ_FRM_ADRS_LN1" type="xsd:string" />
+			<xsd:element name="CHQ_FRM_ADRS_LN2" type="xsd:string" />
+			<xsd:element name="CHQ_FRM_ADRS_LN3" type="xsd:string" />
+			<xsd:element name="CHQ_FRM_ADRS_LN4" type="xsd:string" />
+			<xsd:element name="CHQ_TO_NM" type="xsd:string" />
+			<xsd:element name="CHQ_TO_CNTRY" type="xsd:string" />
+			<xsd:element name="CHQ_TO_ADRS_LN1" type="xsd:string" />
+			<xsd:element name="CHQ_TO_ADRS_LN2" type="xsd:string" />
+			<xsd:element name="CHQ_TO_ADRS_LN3" type="xsd:string" />
+			<xsd:element name="CHQ_TO_ADRS_LN4" type="xsd:string" />
+			<xsd:element name="CHQ_MTRTY_DT" type="xsd:string" />
+			<xsd:element name="CHQ_FORMS_CODE" type="xsd:string" />
+			<xsd:element name="CHQ_MEMO_FLD1" type="xsd:string" />
+			<xsd:element name="CHQ_MEMO_FLD2" type="xsd:string" />
+			<xsd:element name="RGNL_CLR_ZONE" type="xsd:string" />
+			<xsd:element name="PRT_LCTN" type="xsd:string" />
+			<xsd:element name="CHQ_TYP" type="xsd:integer" />
+			<xsd:element name="CHQ_DLVRY_CODE" type="xsd:integer" />
+			<xsd:element name="INSTR_PRTY_CODE" type="xsd:integer" />
+			<xsd:element name="Rem_chq_dtl_ver" type="xsd:integer" />
+			<xsd:element name="TransactionStatus">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" ref="oldtns1:SuccessFlag" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SuccessFlag" type="xsd:integer" />
+			<xsd:element name="TransactionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element minOccurs="0"
+							ref="oldtns1:ExternalReferenceNumber" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:InternalReferenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:SourceReferenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:ErrorId" />
+						<xsd:element minOccurs="0" ref="oldtns1:ErrorDescription" />
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ExternalReferenceNumber" type="xsd:string" />
+			<xsd:element name="InternalReferenceNumber" type="xsd:string" />
+			<xsd:element name="SourceReferenceNumber" type="xsd:string" />
+			<xsd:element name="SequenceNumber" type="xsd:integer" />
+			<xsd:element name="TransactionPostType" type="xsd:integer" />
+		</xsd:schema>
+
+	</wsdl:types>
+
+
+	<wsdl:message name="NEFTPaymentInquiry">
+		<wsdl:part element="oldtns1:NEFTPaymentInquiry" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="NEFTPaymentInquiryResponse">
+		<wsdl:part element="oldtns1:NEFTPaymentInquiryResponse"
+			name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="NEFT">
+		<wsdl:operation name="NEFTInquiry">
+			<wsdl:documentation />
+			<wsdl:input message="tns:NEFTPaymentInquiry">
+			</wsdl:input>
+			<wsdl:output message="tns:NEFTPaymentInquiryResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="NEFTInquiry" type="tns:NEFT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="NEFTInquiry">
+			<soap:operation soapAction="http://com.tcs.bancs/NEFT" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="NEFT">
+		<wsdl:documentation />
+		<wsdl:port binding="tns:NEFTInquiry" name="NEFT">
+			<soap:address location="http://hackathon.axisbank.com:8523/NEFTInqMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

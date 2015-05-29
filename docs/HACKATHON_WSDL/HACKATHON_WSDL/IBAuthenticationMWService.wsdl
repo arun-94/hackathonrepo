@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IBAuthenticationMWService"
+	targetNamespace="http://tempuri.org/IBAuthenticationMWService"
+	xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://tempuri.org/IBAuthenticationMWService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="IBAuthenticationMWServiceSOAP_HTTP_Binding"
+					originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+	<wsdl:types>
+
+		<!-- <xsd:schema targetNamespace="http://tempuri.org" xmlns:mrm="http://tempuri.org/IBAuthenticationMWService" 
+			xmlns:tns="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd"/> 
+			</xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/IBAuthenticationMWService"
+			xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+			<xsd:element name="UniqueId" type="xsd:string" />
+			<xsd:element name="ServiceRequestId" type="xsd:string" />
+			<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+			<xsd:element name="ChannelId" type="xsd:string" />
+			<xsd:complexType name="t_Header">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="oldtns1:UniqueId" />
+					<xsd:element ref="oldtns1:ServiceRequestId" />
+					<xsd:element ref="oldtns1:ServiceRequestVersion" />
+					<xsd:element ref="oldtns1:ChannelId" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+				type="oldtns1:t_Header" />
+			<xsd:element name="LoginId" type="xsd:string" />
+			<xsd:element name="Passcode" type="xsd:string" />
+			<xsd:complexType name="t_IBRequest">
+				<xsd:sequence>
+					<xsd:element ref="oldtns1:LoginId" />
+					<xsd:element ref="oldtns1:Passcode" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="CustomerNo" type="xsd:string" />
+			<xsd:element name="AccountNumber" type="xsd:string" />
+			<xsd:element name="CustomerName" type="xsd:string" />
+			<xsd:element name="CreditCardEnabledFlag" type="xsd:string" />
+			<xsd:element name="ErrorCode" type="xsd:string" />
+			<xsd:element name="ErrorDescription" type="xsd:string" />
+			<xsd:element name="CustomerDetails">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="oldtns1:CustomerNo" />
+						<xsd:element ref="oldtns1:AccountNumber" />
+						<xsd:element ref="oldtns1:CustomerName" />
+						<xsd:element ref="oldtns1:CreditCardEnabledFlag" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:complexType name="t_IBResponse">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" ref="oldtns1:ErrorCode" />
+					<xsd:element minOccurs="0" ref="oldtns1:ErrorDescription" />
+					<xsd:element maxOccurs="unbounded" minOccurs="0"
+						ref="oldtns1:CustomerDetails" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IBRequest"
+				type="oldtns1:t_IBRequest" />
+			<xsd:element ibmSchExtn:docRoot="true" name="IBResponse"
+				type="oldtns1:t_IBResponse" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+	<wsdl:message name="AuthenticateUser_in">
+		<wsdl:part element="oldtns1:IBRequest" name="IBRequest" />
+	</wsdl:message>
+	<wsdl:message name="AuthenticateUser_out">
+		<wsdl:part element="oldtns1:IBResponse" name="IBResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="IBAuthenticationMWServicePortType">
+		<wsdl:operation name="VerifyUserLogin">
+			<wsdl:input message="tns:AuthenticateUser_in" name="AuthenticateUser_Input" />
+			<wsdl:output message="tns:AuthenticateUser_out" name="AuthenticateUser_Output" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="IBAuthenticationMWServiceSOAP_HTTP_Binding"
+		type="tns:IBAuthenticationMWServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="VerifyUserLogin">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AuthenticateUser_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="IBRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AuthenticateUser_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="IBResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="IBAuthenticationMWService">
+		<wsdl:port binding="tns:IBAuthenticationMWServiceSOAP_HTTP_Binding"
+			name="IBAuthenticationESBServicePort">
+			<soap:address location="http://hackathon.axisbank.com:8523/IBAuthenticationMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

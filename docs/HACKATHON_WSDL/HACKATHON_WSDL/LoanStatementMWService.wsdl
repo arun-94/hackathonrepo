@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	name="LoanStatementMWService" targetNamespace="http://tempuri.org/LoanStatementMWService"
+	xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://tempuri.org/LoanStatementMWService"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="LoanStatementMWServiceSOAP_HTTP_Binding"
+					originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+	<wsdl:types>
+		
+		
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://tempuri.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:mrm="http://tempuri.org/LoanStatementMWService" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenv11="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<xsd:element ibmSchExtn:docRoot="true" name="ITCertificate_Request"
+		type="oldtns1:t_ITCertificate_Request" />
+	<xsd:element ibmSchExtn:docRoot="true" name="ITCertificate_Response"
+		type="oldtns1:t_ITCertificate_Response" />
+	<xsd:element ibmSchExtn:docRoot="true" name="LoanStatement_Request"
+		type="oldtns1:t_LoanStatement_Request" />
+	<xsd:element ibmSchExtn:docRoot="true" name="LoanStatement_Response"
+		type="oldtns1:t_LoanStatement_Response" />
+	<xsd:element name="UniqueId" type="xsd:string" />
+	<xsd:element name="ServiceRequestId" type="xsd:string" />
+	<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+	<xsd:element name="ChannelId" type="xsd:string" />
+	<xsd:element name="LoanServiceId" type="xsd:string" />
+	<xsd:element name="LoanUserId" type="xsd:string" />
+	<xsd:element name="LoanUniqueNumber" type="xsd:string" />
+	<xsd:element name="FinancialYear" type="xsd:string" />
+	<xsd:element name="Date" type="xsd:string" />
+	<xsd:element name="LoanCustomerName" type="xsd:string" />
+	<xsd:element name="CustomerAddressLine1" type="xsd:string" />
+	<xsd:element name="CustomerAddressLine2" type="xsd:string" />
+	<xsd:element name="CustomerAddressLine3" type="xsd:string" />
+	<xsd:element name="CustomerAddressLine4" type="xsd:string" />
+	<xsd:element name="City" type="xsd:string" />
+	<xsd:element name="ZipCode" type="xsd:string" />
+	<xsd:element name="LoanStrtDt" type="xsd:string" />
+	<xsd:element name="LoanEndDt" type="xsd:string" />
+	<xsd:element name="LoanSanctionAmount" type="xsd:string" />
+	<xsd:element name="InterestPart" type="xsd:string" />
+	<xsd:element name="PrincipalPart" type="xsd:string" />
+	<xsd:element name="Balance" type="xsd:string" />
+	<xsd:element name="IntrstCompWords" type="xsd:string" />
+	<xsd:element name="TotalAmount" type="xsd:string" />
+	<xsd:element name="PermanentAddressLine1" type="xsd:string" />
+	<xsd:element name="PermanentAddressLine2" type="xsd:string" />
+	<xsd:element name="PermanentAddressLine3" type="xsd:string" />
+	<xsd:element name="PermanentCity" type="xsd:string" />
+	<xsd:element name="PermanentAddressZipCode" type="xsd:string" />
+	<xsd:element name="SystemDate" type="xsd:string" />
+	<xsd:element name="ErrorCode" type="xsd:string" />
+	<xsd:element name="ErrorDescription" type="xsd:string" />
+	<xsd:element name="CustomerID" type="xsd:string" />
+	<xsd:element name="CoApplicantName" type="xsd:string" />
+	<xsd:element name="MobileNumber" type="xsd:string" />
+	<xsd:element name="Product" type="xsd:string" />
+	<xsd:element name="Currency" type="xsd:string" />
+	<xsd:element name="DisbursedAmount" type="xsd:string" />
+	<xsd:element name="EffectiveRate" type="xsd:string" />
+	<xsd:element name="Tennure" type="xsd:string" />
+	<xsd:element name="Installments" type="xsd:string" />
+	<xsd:element name="InstallmentsPaid" type="xsd:string" />
+	<xsd:element name="Staus" type="xsd:string" />
+	<xsd:element name="SRNumber" type="xsd:string" />
+	<xsd:element name="TransactionDate" type="xsd:string" />
+	<xsd:element name="ChequeNumber" type="xsd:string" />
+	<xsd:element name="DebitAmount" type="xsd:string" />
+	<xsd:element name="CreditAmount" type="xsd:string" />
+	<xsd:element name="Remarks" type="xsd:string" />
+	<xsd:element name="SanctionedAmount" type="xsd:string" />
+	<xsd:element name="FromDate" type="xsd:string" />
+	<xsd:element name="ToDate" type="xsd:string" />
+	<xsd:element name="Records">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="oldtns1:SRNumber" />
+				<xsd:element ref="oldtns1:TransactionDate" />
+				<xsd:element ref="oldtns1:ChequeNumber" />
+				<xsd:element ref="oldtns1:DebitAmount" />
+				<xsd:element ref="oldtns1:CreditAmount" />
+				<xsd:element ref="oldtns1:Balance" />
+				<xsd:element ref="oldtns1:Remarks" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="t_LoanStatement_Response">
+		<xsd:sequence>
+
+
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:LoanCustomerName" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:CustomerID" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:CoApplicantName" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:MobileNumber" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:LoanUniqueNumber" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Product" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Currency" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:SanctionedAmount" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:DisbursedAmount" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:EffectiveRate" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Tennure" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:Installments" />
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:InstallmentsPaid" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Staus" />
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				ref="oldtns1:Records" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Exception" />
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ITCertOutPut">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="oldtns1:Date" />
+				<xsd:element ref="oldtns1:LoanCustomerName" />
+				<xsd:element ref="oldtns1:CustomerAddressLine1" />
+				<xsd:element ref="oldtns1:CustomerAddressLine2" />
+				<xsd:element ref="oldtns1:CustomerAddressLine3" />
+				<xsd:element ref="oldtns1:CustomerAddressLine4" />
+				<xsd:element ref="oldtns1:City" />
+				<xsd:element ref="oldtns1:ZipCode" />
+				<xsd:element ref="oldtns1:LoanStrtDt" />
+				<xsd:element ref="oldtns1:LoanEndDt" />
+				<xsd:element ref="oldtns1:LoanUniqueNumber" />
+				<xsd:element ref="oldtns1:LoanSanctionAmount" />
+				<xsd:element ref="oldtns1:InterestPart" />
+				<xsd:element ref="oldtns1:PrincipalPart" />
+				<xsd:element ref="oldtns1:Balance" />
+				<xsd:element ref="oldtns1:IntrstCompWords" />
+				<xsd:element ref="oldtns1:TotalAmount" />
+				<xsd:element ref="oldtns1:PermanentAddressLine1" />
+				<xsd:element ref="oldtns1:PermanentAddressLine2" />
+				<xsd:element ref="oldtns1:PermanentAddressLine3" />
+				<xsd:element ref="oldtns1:PermanentCity" />
+				<xsd:element ref="oldtns1:PermanentAddressZipCode" />
+				<xsd:element ref="oldtns1:SystemDate" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+	</xsd:element>
+	<xsd:element name="Exception">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="oldtns1:ErrorCode" />
+				<xsd:element ref="oldtns1:ErrorDescription" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RequestInfo" type="oldtns1:t_RequestInfo" />
+	<xsd:complexType name="t_LoanInfo">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:LoanUserId" />
+			<xsd:element ref="oldtns1:LoanServiceId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_RequestInfo">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:LoanUniqueNumber" />
+			<xsd:element ref="oldtns1:FinancialYear" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ITCertificate_Request">
+		<xsd:sequence>
+
+
+			<xsd:element ref="oldtns1:RequestInfo" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ITCertificate_Response">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="0"
+				ref="oldtns1:ITCertOutPut" />
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Exception" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_LoanStatement_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:LoanRequestInfo" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="LoanInfo">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="oldtns1:LoanUserId" />
+				<xsd:element ref="oldtns1:LoanServiceId" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="t_LoanRequestInfo">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:LoanUniqueNumber" />
+			<xsd:element ref="oldtns1:FromDate" />
+			<xsd:element ref="oldtns1:ToDate" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="LoanRequestInfo" type="oldtns1:t_LoanRequestInfo" />
+	<xsd:element name="LoanStatementLoanRequestInfo">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element ref="oldtns1:LoanRequestInfo" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="subHeader">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:UniqueId" />
+				<xsd:element ref="oldtns1:ServiceRequestId" />
+				<xsd:element ref="oldtns1:ServiceRequestVersion" />
+				<xsd:element ref="oldtns1:ChannelId" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
+
+	</wsdl:types>
+
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+
+	<wsdl:message name="ITCertificateReq_in">
+		<wsdl:part element="oldtns1:ITCertificate_Request" name="ITCertificateIn" />
+	</wsdl:message>
+	<wsdl:message name="ITCertificateResp_out">
+		<wsdl:part element="oldtns1:ITCertificate_Response" name="ITCertificateOut" />
+	</wsdl:message>
+	<wsdl:message name="LoanStatementReq_in">
+		<wsdl:part element="oldtns1:LoanStatement_Request" name="LoanStatementIn" />
+	</wsdl:message>
+	<wsdl:message name="LoanStatementResp_out">
+		<wsdl:part element="oldtns1:LoanStatement_Response" name="LoanStatementOut" />
+	</wsdl:message>
+	<wsdl:portType name="LoanStatementMWServicePortType">
+
+
+		<wsdl:operation name="ITCertificate">
+			<wsdl:input message="tns:ITCertificateReq_in" name="ITCertificateReq_Input" />
+			<wsdl:output message="tns:ITCertificateResp_out" name="ITCertificateResp_Output" />
+		</wsdl:operation>
+		<wsdl:operation name="LoanStatement">
+			<wsdl:input message="tns:LoanStatementReq_in" name="LoanStatementReq_Input" />
+			<wsdl:output message="tns:LoanStatementResp_out" name="LoanStatementResp_Output" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="LoanStatementMWServiceSOAP_HTTP_Binding"
+		type="tns:LoanStatementMWServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="ITCertificate">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ITCertificateReq_Input">
+				<soap:body parts="ITCertificateIn" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ITCertificateResp_Output">
+				<soap:body parts="ITCertificateOut" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="LoanStatement">
+			<soap:operation soapAction="" />
+			<wsdl:input name="LoanStatementReq_Input">
+				<soap:body parts="LoanStatementIn" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LoanStatementResp_Output">
+				<soap:body parts="LoanStatementOut" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="LoanStatementMWService">
+		<wsdl:port binding="tns:LoanStatementMWServiceSOAP_HTTP_Binding"
+			name="LoanStatementMWServicePort">
+			<soap:address location="http://hackathon.axisbank.com:8523/LoanStatementMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

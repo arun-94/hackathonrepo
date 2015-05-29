@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="DebitCardMWService"
+	targetNamespace="http://tempuri.org/DebitCardMWService" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/DebitCardMWService"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="DebitCardMWService_Binding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+
+
+	<wsdl:types>
+		<!-- <xsd:schema targetNamespace="http://tempuri.org" xmlns:mrm="http://tempuri.org/DebitCardMWService" 
+			xmlns:tns="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd" 
+			/> </xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/DebitCardMWService"
+			xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+			<xsd:complexType name="t_RequestInfo">
+
+				<xsd:sequence>
+
+
+
+					<xsd:element maxOccurs="1" minOccurs="1"
+						name="TransactionTimestamp" type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="1"
+						name="SourceMessageIdentifier" type="xsd:string" />
+
+
+
+
+				</xsd:sequence>
+
+			</xsd:complexType>
+			<xsd:complexType name="t_CardHotListBlockReq">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="BlockFlag"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="0" name="DebitCardNumber"
+						type="xsd:string">
+						<xsd:annotation />
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="CustomerId"
+						type="xsd:string">
+						<xsd:annotation />
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="MobileNumber"
+						type="xsd:string">
+						<xsd:annotation />
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CardHotListSrvReq">
+				<xsd:sequence>
+					<xsd:element name="BlockReq" type="oldtns1:t_CardHotListBlockReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_BlockCardRequestDetailsReq">
+				<xsd:sequence>
+					<xsd:element name="SrvReq" type="oldtns1:t_CardHotListSrvReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_BlockCardReq">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="RequestInfo"
+						type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails"
+						type="oldtns1:t_BlockCardRequestDetailsReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="BlockCardReq"
+				type="oldtns1:t_BlockCardReq" />
+			<xsd:complexType name="t_CardHotListBlockResp">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorCode"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorMessage"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CardHotListSrvResp">
+				<xsd:sequence>
+					<xsd:element name="BlockResp" type="oldtns1:t_CardHotListBlockResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_BlockCardRequestDetailsResp">
+				<xsd:sequence>
+					<xsd:element name="SrvResp" type="oldtns1:t_CardHotListSrvResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_BlockCardResp">
+				<xsd:sequence>
+					<xsd:element name="RequestInfo" type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails"
+						type="oldtns1:t_BlockCardRequestDetailsResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CardDeHotListDeBlockReq">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="0" name="DebitCardNumber"
+						type="xsd:string">
+						<xsd:annotation />
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="CustomerId"
+						type="xsd:string">
+						<xsd:annotation />
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="MobileNumber"
+						type="xsd:string">
+						<xsd:annotation />
+					</xsd:element>
+
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CardDeHotListSrvReq">
+				<xsd:sequence>
+					<xsd:element name="DeBlockReq" type="oldtns1:t_CardDeHotListDeBlockReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_UnBlockCardRequestDetailsReq">
+				<xsd:sequence>
+					<xsd:element name="SrvReq" type="oldtns1:t_CardDeHotListSrvReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_UnBlockCardReq">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="RequestInfo"
+						type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails"
+						type="oldtns1:t_UnBlockCardRequestDetailsReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="UnBlockCardReq"
+				type="oldtns1:t_UnBlockCardReq" />
+			<xsd:complexType name="t_CardDeHotListBlockResp">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorCode"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorMessage"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CardDeHotListSrvResp">
+				<xsd:sequence>
+					<xsd:element name="DeBlockResp" type="oldtns1:t_CardDeHotListBlockResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_UnBlockCardRequestDetailsResp">
+				<xsd:sequence>
+					<xsd:element name="SrvResp" type="oldtns1:t_CardDeHotListSrvResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_UnBlockCardResp">
+				<xsd:sequence>
+					<xsd:element name="RequestInfo" type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails"
+						type="oldtns1:t_UnBlockCardRequestDetailsResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="UnBlockCardResp"
+				type="oldtns1:t_UnBlockCardResp" />
+			<xsd:element ibmSchExtn:docRoot="true" name="BlockCardResp"
+				type="oldtns1:t_BlockCardResp" />
+			<xsd:complexType name="t_CardDetailsReq">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="0" name="CustomerId"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="0" name="DebitCardNumber"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquirySrvReq">
+				<xsd:sequence>
+					<xsd:element name="CardDetailsReq" type="oldtns1:t_CardDetailsReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquriyRequestDetailsReq">
+				<xsd:sequence>
+					<xsd:element name="SrvReq" type="oldtns1:t_InquirySrvReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquiryReq">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="RequestInfo"
+						type="oldtns1:t_RequestInfo" />
+					<xsd:element maxOccurs="1" minOccurs="1" name="RequestDetails"
+						type="oldtns1:t_InquriyRequestDetailsReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CardDetailsResp">
+				<xsd:sequence>
+					<xsd:element name="DebitCardNumber" type="xsd:string" />
+					<xsd:element name="DebitCardStatus" type="xsd:string" />
+					<xsd:element name="AccountNumber" type="xsd:string" />
+					<xsd:element name="AccountType" type="xsd:string" />
+					<xsd:element name="UsageId" type="xsd:string" />
+					<xsd:element name="IssuanceDate" type="xsd:string" />
+					<xsd:element name="AtmLimit" type="xsd:string" />
+					<xsd:element name="PosLimit" type="xsd:string" />
+					<xsd:element name="InternationalAtm" type="xsd:string" />
+					<xsd:element name="InternationalPos" type="xsd:string" />
+					<xsd:element name="ProductAtmLimit" type="xsd:string" />
+					<xsd:element name="ProductPosLimit" type="xsd:string" />
+					<xsd:element name="ProductInternationalAtm" type="xsd:string" />
+					<xsd:element name="ProductInternationalPos" type="xsd:string" />
+					<xsd:element name="InternationalLimitChange" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CustomerDetailsResp">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="CustomerId"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="1" name="CustomerName"
+						type="xsd:string" />
+					<xsd:element maxOccurs="unbounded" minOccurs="0"
+						name="CardDetails" type="oldtns1:t_CardDetailsResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquiryCardDetailsResp">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorCode"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorMessage"
+						type="xsd:string" />
+					<xsd:element minOccurs="0" name="CustomerDetails"
+						type="oldtns1:t_CustomerDetailsResp" />
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquirySrvResp">
+				<xsd:sequence>
+					<xsd:element name="CardDetailsResp" type="oldtns1:t_InquiryCardDetailsResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquiryRequestDetailsResp">
+				<xsd:sequence>
+					<xsd:element name="SrvResp" type="oldtns1:t_InquirySrvResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_InquiryResp">
+				<xsd:sequence>
+					<xsd:element name="RequestInfo" type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails" type="oldtns1:t_InquiryRequestDetailsResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="InquiryReq"
+				type="oldtns1:t_InquiryReq" />
+			<xsd:element ibmSchExtn:docRoot="true" name="InquiryResp"
+				type="oldtns1:t_InquiryResp" />
+			<xsd:complexType name="t_LimitChangeReq">
+				<xsd:sequence>
+					<xsd:element name="DebitCardNumber" type="xsd:string" />
+					<xsd:element name="ATMLimit" type="xsd:string" />
+					<xsd:element name="PosLimit" type="xsd:string" />
+
+					<xsd:element name="UsageID" type="xsd:string" />
+					<xsd:element name="NumberOfDays" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitUpdateSrvReq">
+				<xsd:sequence>
+					<xsd:element name="LimitChangeReq" type="oldtns1:t_LimitChangeReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitUpdateRequestDetailsReq">
+				<xsd:sequence>
+					<xsd:element name="SrvReq" type="oldtns1:t_LimitUpdateSrvReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitUpdateReq">
+				<xsd:sequence>
+					<xsd:element name="RequestInfo" type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails"
+						type="oldtns1:t_LimitUpdateRequestDetailsReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitChangeResp">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorCode"
+						type="xsd:string" />
+					<xsd:element maxOccurs="1" minOccurs="1" name="ErrorMessage"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitUpdateSrvResp">
+				<xsd:sequence>
+					<xsd:element name="LimitChangeResp" type="oldtns1:t_LimitChangeResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitUpdateRequestDetailsResp">
+				<xsd:sequence>
+					<xsd:element name="SrvResp" type="oldtns1:t_LimitUpdateSrvResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_LimitUpdateResp">
+				<xsd:sequence>
+					<xsd:element name="RequestInfo" type="oldtns1:t_RequestInfo" />
+					<xsd:element name="RequestDetails"
+						type="oldtns1:t_LimitUpdateRequestDetailsResp" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="LimitUpdateReq"
+				type="oldtns1:t_LimitUpdateReq" />
+			<xsd:element ibmSchExtn:docRoot="true" name="LimitUpdateResp"
+				type="oldtns1:t_LimitUpdateResp" />
+			<xsd:complexType name="t_ReIssue">
+				<xsd:sequence>
+					<xsd:element name="Pan" type="xsd:string" />
+					<xsd:element name="CustID" type="xsd:string" />
+					<xsd:element name="AccountNo" type="xsd:string" />
+					<xsd:element name="Bin" type="xsd:string" />
+					<xsd:element name="Scheme" type="xsd:string" />
+					<xsd:element name="UsageId" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_ReIssueSrvReq">
+				<xsd:sequence>
+					<xsd:element name="ReIssueReq" type="oldtns1:t_ReIssue" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_ReIssueRequestDetailsReq">
+				<xsd:sequence>
+					<xsd:element name="SrvReq" type="oldtns1:t_ReIssueSrvReq" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="t_CustDetails">
+				<xsd:sequence>
+					<xsd:element name="Pan" type="xsd:string" />
+					<xsd:element name="PanStat" type="xsd:string" />
+					<xsd:element name="Scheme" type="xsd:string" />
+					<xsd:element name="AccountNo" type="xsd:string" />
+					<xsd:element name="UsageId" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="t_RequestInfo" type="oldtns1:t_RequestInfo" />
+			<xsd:element name="t_CardHotListBlockReq" type="oldtns1:t_CardHotListBlockReq" />
+			<xsd:element name="t_CardHotListSrvReq" type="oldtns1:t_CardHotListSrvReq" />
+			<xsd:element name="t_BlockCardRequestDetailsReq" type="oldtns1:t_BlockCardRequestDetailsReq" />
+			<xsd:element name="t_BlockCardReq" type="oldtns1:t_BlockCardReq" />
+			<xsd:element name="t_CardHotListBlockResp" type="oldtns1:t_CardHotListBlockResp" />
+			<xsd:element name="t_CardHotListSrvResp" type="oldtns1:t_CardHotListSrvResp" />
+			<xsd:element name="t_BlockCardRequestDetailsResp" type="oldtns1:t_BlockCardRequestDetailsResp" />
+			<xsd:element name="t_BlockCardResp" type="oldtns1:t_BlockCardResp" />
+			<xsd:element name="t_CardDeHotListDeBlockReq" type="oldtns1:t_CardDeHotListDeBlockReq" />
+			<xsd:element name="t_CardDeHotListSrvReq" type="oldtns1:t_CardDeHotListSrvReq" />
+			<xsd:element name="t_UnBlockCardRequestDetailsReq"
+				type="oldtns1:t_UnBlockCardRequestDetailsReq" />
+			<xsd:element name="t_UnBlockCardReq" type="oldtns1:t_UnBlockCardReq" />
+			<xsd:element name="t_CardDeHotListBlockResp" type="oldtns1:t_CardDeHotListBlockResp" />
+			<xsd:element name="t_CardDeHotListSrvResp" type="oldtns1:t_CardDeHotListSrvResp" />
+			<xsd:element name="t_UnBlockCardRequestDetailsResp"
+				type="oldtns1:t_UnBlockCardRequestDetailsResp" />
+			<xsd:element name="t_UnBlockCardResp" type="oldtns1:t_UnBlockCardResp" />
+			<xsd:element name="t_CardDetailsReq" type="oldtns1:t_CardDetailsReq" />
+			<xsd:element name="t_InquirySrvReq" type="oldtns1:t_InquirySrvReq" />
+			<xsd:element name="t_InquriyRequestDetailsReq" type="oldtns1:t_InquriyRequestDetailsReq" />
+			<xsd:element name="t_InquiryReq" type="oldtns1:t_InquiryReq" />
+			<xsd:element name="t_InquiryCardDetailsResp" type="oldtns1:t_InquiryCardDetailsResp" />
+			<xsd:element name="t_InquirySrvResp" type="oldtns1:t_InquirySrvResp" />
+			<xsd:element name="t_InquiryRequestDetailsResp" type="oldtns1:t_InquiryRequestDetailsResp" />
+			<xsd:element name="t_InquiryResp" type="oldtns1:t_InquiryResp" />
+			<xsd:element name="t_LimitChangeReq" type="oldtns1:t_LimitChangeReq" />
+			<xsd:element name="t_LimitUpdateSrvReq" type="oldtns1:t_LimitUpdateSrvReq" />
+			<xsd:element name="t_LimitUpdateRequestDetailsReq"
+				type="oldtns1:t_LimitUpdateRequestDetailsReq" />
+			<xsd:element name="t_LimitUpdateReq" type="oldtns1:t_LimitUpdateReq" />
+			<xsd:element name="t_LimitChangeResp" type="oldtns1:t_LimitChangeResp" />
+			<xsd:element name="t_LimitUpdateSrvResp" type="oldtns1:t_LimitUpdateSrvResp" />
+			<xsd:element name="t_LimitUpdateRequestDetailsResp"
+				type="oldtns1:t_LimitUpdateRequestDetailsResp" />
+			<xsd:element name="t_LimitUpdateResp" type="oldtns1:t_LimitUpdateResp" />
+			<xsd:element name="t_CardDetailsResp" type="oldtns1:t_CardDetailsResp" />
+			<xsd:element name="t_CustomerDetailsResp" type="oldtns1:t_CustomerDetailsResp" />
+			<xsd:element name="t_ReIssue" type="oldtns1:t_ReIssue" />
+			<xsd:element name="t_ReIssueSrvReq" type="oldtns1:t_ReIssueSrvReq" />
+			<xsd:element name="t_ReIssueRequestDetailsReq" type="oldtns1:t_ReIssueRequestDetailsReq" />
+			<xsd:element name="panNo" type="xsd:string" />
+			<xsd:element name="productCode" type="xsd:string" />
+			<xsd:element name="ProductName" type="xsd:string" />
+			<xsd:element name="scheme" type="xsd:string" />
+			<xsd:element name="usageId" type="xsd:string" />
+			<xsd:element name="bin" type="xsd:string" />
+			<xsd:element name="fee" type="xsd:string" />
+			<xsd:complexType name="DebitCardFeeRecord">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" ref="oldtns1:productCode" />
+					<xsd:element minOccurs="0" ref="oldtns1:ProductName" />
+					<xsd:element minOccurs="0" ref="oldtns1:scheme" />
+					<xsd:element minOccurs="0" ref="oldtns1:usageId" />
+					<xsd:element minOccurs="0" ref="oldtns1:bin" />
+					<xsd:element minOccurs="0" ref="oldtns1:fee" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="response" type="xsd:string" />
+			<xsd:element name="responseCode" type="xsd:string" />
+			<xsd:element name="recordCount" type="xsd:string" />
+			<xsd:element name="CurrentDebitCardDetail" type="oldtns1:DebitCardFeeRecord" />
+			<xsd:element name="DebitCardFeeRecord" type="oldtns1:DebitCardFeeRecord" />
+			<xsd:complexType name="DebitCardFeeRequest">
+				<xsd:sequence>
+					<xsd:element ref="oldtns1:panNo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DebitCardFeeResponse">
+				<xsd:sequence>
+					<xsd:element ref="oldtns1:responseCode" />
+					<xsd:element ref="oldtns1:response" />
+					<xsd:element ref="oldtns1:recordCount" />
+					<xsd:element ref="oldtns1:CurrentDebitCardDetail" />
+					<xsd:element maxOccurs="unbounded" minOccurs="0"
+						ref="oldtns1:DebitCardFeeRecord" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="DebitCardFeeResponse" type="oldtns1:DebitCardFeeResponse" />
+			<xsd:element name="DebitCardFeeRequest" type="oldtns1:DebitCardFeeRequest" />
+			<xsd:element name="customerId" type="xsd:string" />
+			<xsd:element name="accountNo" type="xsd:string" />
+			<xsd:element name="mobileNo" type="xsd:string" />
+			<xsd:element name="matchFound" type="xsd:string" />
+			<xsd:complexType name="DebitCardDetailRecord">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" ref="oldtns1:customerId" />
+					<xsd:element minOccurs="0" ref="oldtns1:accountNo" />
+					<xsd:element minOccurs="0" ref="oldtns1:mobileNo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="DebitCardDetailRecord" type="oldtns1:DebitCardDetailRecord" />
+			<xsd:complexType name="DebitCardDetailRequest">
+				<xsd:sequence>
+					<xsd:element ref="oldtns1:panNo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DebitCardDetailResponse">
+				<xsd:sequence>
+					<xsd:element ref="oldtns1:recordCount" />
+					<xsd:element ref="oldtns1:matchFound" />
+					<xsd:element maxOccurs="unbounded" minOccurs="0"
+						ref="oldtns1:DebitCardDetailRecord" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="DebitCardDetailResponse" type="oldtns1:DebitCardDetailResponse" />
+			<xsd:element name="DebitCardDetailRequest" type="oldtns1:DebitCardDetailRequest" />
+			<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+				type="oldtns1:subHeader" />
+			<xsd:complexType name="subHeader">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="oldtns1:UniqueId" />
+					<xsd:element ref="oldtns1:ServiceRequestId" />
+					<xsd:element ref="oldtns1:ServiceRequestVersion" />
+					<xsd:element ref="oldtns1:ChannelId" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="UniqueId" type="xsd:string" />
+			<xsd:element name="ServiceRequestId" type="xsd:string" />
+			<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+			<xsd:element name="ChannelId" type="xsd:string" />
+		</xsd:schema>
+	</wsdl:types>
+
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+	<wsdl:message name="Inquiry_in">
+		<wsdl:part element="oldtns1:InquiryReq" name="InquiryReq" />
+	</wsdl:message>
+	<wsdl:message name="Inquiry_out">
+		<wsdl:part element="oldtns1:InquiryResp" name="InquiryResp" />
+	</wsdl:message>
+	<wsdl:message name="LimitUpdate_in">
+		<wsdl:part element="oldtns1:LimitUpdateReq" name="LimitUpdateReq" />
+	</wsdl:message>
+	<wsdl:message name="LimitUpdate_out">
+		<wsdl:part element="oldtns1:LimitUpdateResp" name="LimitUpdateResp" />
+	</wsdl:message>
+	<wsdl:message name="CardHotList_in">
+		<wsdl:part element="oldtns1:BlockCardReq" name="BlockCardReq" />
+	</wsdl:message>
+	<wsdl:message name="CardHotList_out">
+		<wsdl:part element="oldtns1:BlockCardResp" name="BlockCardResp" />
+	</wsdl:message>
+	<wsdl:message name="CardDeHotList_in">
+		<wsdl:part element="oldtns1:UnBlockCardReq" name="UnBlockCardReq" />
+	</wsdl:message>
+	<wsdl:message name="CardDeHotList_out">
+		<wsdl:part element="oldtns1:UnBlockCardResp" name="UnBlockCardResp" />
+	</wsdl:message>
+	<wsdl:portType name="DebitCardMWService_PortType">
+
+
+		<wsdl:operation name="GetCards">
+			<wsdl:input message="tns:Inquiry_in" name="Inquiry_Input" />
+			<wsdl:output message="tns:Inquiry_out" name="Inquiry_Output" />
+		</wsdl:operation>
+		<wsdl:operation name="ChangeLimit">
+			<wsdl:input message="tns:LimitUpdate_in" name="LimitUpdate_Input" />
+			<wsdl:output message="tns:LimitUpdate_out" name="LimitUpdate_Output" />
+		</wsdl:operation>
+
+		<wsdl:operation name="BlockCard">
+			<wsdl:input message="tns:CardHotList_in" name="CardHotList_Input" />
+			<wsdl:output message="tns:CardHotList_out" name="CardHotList_Output" />
+		</wsdl:operation>
+		<wsdl:operation name="UnBlockCard">
+			<wsdl:input message="tns:CardDeHotList_in" name="CardDeHotList_Input" />
+			<wsdl:output message="tns:CardDeHotList_out" name="CardDeHotList_Output" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="DebitCardMWService_Binding" type="tns:DebitCardMWService_PortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="GetCards">
+			<soap:operation soapAction="" />
+			<wsdl:input name="Inquiry_Input">
+				<soap:body parts="InquiryReq" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Inquiry_Output">
+				<soap:body parts="InquiryResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ChangeLimit">
+			<soap:operation soapAction="" />
+			<wsdl:input name="LimitUpdate_Input">
+				<soap:body parts="LimitUpdateReq" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LimitUpdate_Output">
+				<soap:body parts="LimitUpdateResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="BlockCard">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CardHotList_Input">
+				<soap:body parts="BlockCardReq" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CardHotList_Output">
+				<soap:body parts="BlockCardResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UnBlockCard">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CardDeHotList_Input">
+				<soap:body parts="UnBlockCardReq" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CardDeHotList_Output">
+				<soap:body parts="UnBlockCardResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="DebitCardMWService">
+		<wsdl:port binding="tns:DebitCardMWService_Binding" name="DebitCardMWService_Port">
+			<soap:address location="http://hackathon.axisbank.com:8523/DebitCardMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BillDeskMWService"
+	targetNamespace="http://tempuri.org/BillDeskMWService" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/BillDeskMWService"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="BillDeskMWServiceSOAP_HTTP_Binding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+	<wsdl:types>
+
+		<!-- <xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:mrm="http://tempuri.org/BillDeskMWService" xmlns:tns="http://tempuri.org">
+			<xsd:include schemaLocation="xsd_xsd0.xsd" />
+		</xsd:schema> -->
+		
+		<xsd:schema targetNamespace="http://tempuri.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/BillDeskMWService" xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+	<xsd:element name="UniqueId" type="xsd:string"/>
+	<xsd:element name="ServiceRequestId" type="xsd:string"/>
+	<xsd:element name="ServiceRequestVersion" type="xsd:string"/>
+	<xsd:element name="ChannelId" type="xsd:string"/>
+	<xsd:complexType name="t_Header">
+		<xsd:sequence maxOccurs="1" minOccurs="1">
+			<xsd:element ref="oldtns1:UniqueId"/>
+			<xsd:element ref="oldtns1:ServiceRequestId"/>
+			<xsd:element ref="oldtns1:ServiceRequestVersion"/>
+			<xsd:element ref="oldtns1:ChannelId"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="subHeader" type="oldtns1:t_Header"/>
+	<xsd:element name="ScheduleDate" type="xsd:string"/>
+	<xsd:element name="BillerIdentifier" type="xsd:string"/>
+	<xsd:element name="BillIdRefNumber" type="xsd:string"/>
+	<xsd:element name="BillDate" type="xsd:string"/>
+	<xsd:element name="BillDueDate" type="xsd:string"/>
+	<xsd:element name="BillStatus" type="xsd:string"/>
+	<xsd:element name="ResponseCode" type="xsd:string"/>
+	<xsd:element name="ResponseDescription" type="xsd:string"/>
+	<xsd:element name="CustomerId" type="xsd:string"/>
+	<xsd:element name="TrxnType" type="xsd:string"/>
+	<xsd:element name="PaymentType" type="xsd:string"/>
+	<xsd:element name="Number" type="xsd:string"/>
+	<xsd:element name="TrxnRefNumber" type="xsd:string"/>
+	<xsd:element name="BillAmount" type="xsd:string"/>
+	<xsd:element name="TrxnDate" type="xsd:string"/>
+	<xsd:element name="TrxnStatus" type="xsd:string"/>
+	<xsd:element name="ScheduleBillReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ScheduleDate"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="InquireBillReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:BillIdRefNumber"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PayBillReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillAmount"/>
+
+				
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:PaymentType"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:Number"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LastPaidBillsReq">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillDueDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrxnRefNumber"/>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PayBillRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrxnRefNumber"/>
+
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+
+
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LastPaidBillsRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillDueDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillAmount"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillStatus"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrxnDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:PaymentType"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:Number"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrxnStatus"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrxnRefNumber"/>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="InquireBillRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillStatus"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillDueDate"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillAmount"/>
+
+
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrxnDate"/>
+
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ScheduleBillRsp">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:CustomerId"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillerIdentifier"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:BillIdRefNumber"/>
+				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="t_ScheduleBillRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseCode"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseDescription"/>
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:ScheduleBillRsp"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_InquireBillRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseCode"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseDescription"/>
+			<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:InquireBillRsp"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_PayBillReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:PayBillReq"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ScheduleBillReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ScheduleBillReq"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_PayBillRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseCode"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseDescription"/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" ref="oldtns1:PayBillRsp"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_LastPaidBillsRsp">
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseCode"/>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:ResponseDescription"/>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" ref="oldtns1:LastPaidBillsRsp"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_LastPaidBillsReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:LastPaidBillsReq"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_InquireBillReq">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:InquireBillReq"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="InquireBillRequest" type="oldtns1:t_InquireBillReq"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="InquireBillResponse" type="oldtns1:t_InquireBillRsp"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="ScheduleBillRequest" type="oldtns1:t_ScheduleBillReq"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="ScheduleBillResponse" type="oldtns1:t_ScheduleBillRsp"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="PayBillRequest" type="oldtns1:t_PayBillReq"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="PayBillResponse" type="oldtns1:t_PayBillRsp"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="LastPaidBillsRequest" type="oldtns1:t_LastPaidBillsReq"/>
+	<xsd:element ibmSchExtn:docRoot="true" name="LastPaidBillsResponse" type="oldtns1:t_LastPaidBillsRsp"/>
+</xsd:schema>
+
+	</wsdl:types>
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+	<wsdl:message name="InquireBill_in">
+		<wsdl:part element="oldtns1:InquireBillRequest" name="InquireBillRequest" />
+	</wsdl:message>
+	<wsdl:message name="InquireBill_out">
+		<wsdl:part element="oldtns1:InquireBillResponse" name="InquireBillResponse" />
+	</wsdl:message>
+
+
+
+	<wsdl:message name="PayBill_in">
+		<wsdl:part element="oldtns1:PayBillRequest" name="PayBillRequest" />
+	</wsdl:message>
+	<wsdl:message name="PayBill_out">
+		<wsdl:part element="oldtns1:PayBillResponse" name="PayBillResponse" />
+	</wsdl:message>
+
+
+
+
+	<wsdl:message name="LastPaidBills_in">
+		<wsdl:part element="oldtns1:LastPaidBillsRequest" name="LastPaidBillsRequest" />
+	</wsdl:message>
+	<wsdl:message name="LastPaidBills_out">
+		<wsdl:part element="oldtns1:LastPaidBillsResponse" name="LastPaidBillsResponse" />
+	</wsdl:message>
+
+
+	<wsdl:message name="ScheduleBill_in">
+		<wsdl:part element="oldtns1:ScheduleBillRequest" name="ScheduleBillRequest" />
+	</wsdl:message>
+	<wsdl:message name="ScheduleBill_out">
+		<wsdl:part element="oldtns1:ScheduleBillResponse" name="ScheduleBillResponse" />
+	</wsdl:message>
+
+
+
+
+	<wsdl:portType name="BillDeskMWServicePortType">
+
+		<wsdl:operation name="PayBill">
+			<wsdl:input message="tns:PayBill_in" name="PayBill_Input" />
+			<wsdl:output message="tns:PayBill_out" name="PayBill_Output" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="InquireBill">
+			<wsdl:input message="tns:InquireBill_in" name="InquireBill_Input" />
+			<wsdl:output message="tns:InquireBill_out" name="InquireBill_Output" />
+		</wsdl:operation>
+
+
+
+		<wsdl:operation name="LastPaidBills">
+			<wsdl:input message="tns:LastPaidBills_in" name="LastPaidBills_Input" />
+			<wsdl:output message="tns:LastPaidBills_out" name="LastPaidBills_Output" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="ScheduleBill">
+			<wsdl:input message="tns:ScheduleBill_in" name="ScheduleBill_Input" />
+			<wsdl:output message="tns:ScheduleBill_out" name="ScheduleBill_Output" />
+		</wsdl:operation>
+
+
+	</wsdl:portType>
+
+	<wsdl:binding name="BillDeskMWServiceSOAP_HTTP_Binding"
+		type="tns:BillDeskMWServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="InquireBill">
+			<soap:operation soapAction="" />
+			<wsdl:input name="InquireBill_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="InquireBillRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="InquireBill_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="InquireBillResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+
+
+		<wsdl:operation name="PayBill">
+			<soap:operation soapAction="" />
+			<wsdl:input name="PayBill_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="PayBillRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="PayBill_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="PayBillResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="LastPaidBills">
+			<soap:operation soapAction="" />
+			<wsdl:input name="LastPaidBills_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="LastPaidBillsRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LastPaidBills_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="LastPaidBillsResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="ScheduleBill">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ScheduleBill_Input">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="ScheduleBillRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ScheduleBill_Output">
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap:body parts="ScheduleBillResponse" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+	</wsdl:binding>
+
+	<wsdl:service name="BillDeskMWService">
+		<wsdl:port binding="tns:BillDeskMWServiceSOAP_HTTP_Binding"
+			name="IBAuthenticationESBServicePort">
+			<soap:address location="http://hackathon.axisbank.com:8523/BillDeskMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

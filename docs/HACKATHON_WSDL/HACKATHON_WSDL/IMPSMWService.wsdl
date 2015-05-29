@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IMPSMWService" targetNamespace="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="MS_IMPS_xmlSOAP_HTTP_Binding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+	<wsdl:types>
+		<!-- <xsd:schema targetNamespace="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd" 
+			/> </xsd:schema> <xsd:schema targetNamespace="http://tempuri.org"> <xsd:include 
+			schemaLocation="xsd_xsd1.xsd" /> </xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+				type="tns:t_Header" />
+			<xsd:complexType name="t_Header">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="tns:UniqueId" />
+					<xsd:element ref="tns:ServiceRequestId" />
+					<xsd:element ref="tns:ServiceRequestVersion" />
+					<xsd:element ref="tns:ChannelId" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="UniqueId" type="xsd:string" />
+			<xsd:element name="ServiceRequestId" type="xsd:string" />
+			<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+			<xsd:element name="ChannelId" type="xsd:string" />
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+			<xsd:element name="ReqId" type="xsd:string" />
+			<xsd:element name="ReqType" type="xsd:string" />
+			<xsd:element name="RemitterMobileNumber" type="xsd:string" />
+			<xsd:element name="RemitterMMID" type="xsd:string" />
+			<xsd:element name="RemitterAccountNumber" type="xsd:string" />
+			<xsd:element name="RemitterName" type="xsd:string" />
+			<xsd:element name="BeneficiaryIFSC" type="xsd:string" />
+			<xsd:element name="BeneficiaryAccountNumber" type="xsd:string" />
+			<xsd:element name="TrxnInitialChannelName" type="xsd:string" />
+			<xsd:element name="ErrorCode" type="xsd:string" />
+			<xsd:element name="ErrorDescription" type="xsd:string" />
+			<xsd:element name="TrxnDate" type="xsd:string" />
+			<xsd:element name="BeneficiaryName" type="xsd:string" />
+
+
+			<xsd:element name="ServiceProviderId" type="xsd:string" />
+
+
+
+			<xsd:element name="Remarks" type="xsd:string" />
+
+			<xsd:element name="Amt" type="xsd:string" />
+
+			<xsd:element name="ForeignRemittanceFlag" type="xsd:string" />
+			<xsd:element name="CorrespondentBankIFSC" type="xsd:string" />
+			<xsd:element name="RespondentAccountNumber" type="xsd:string" />
+			<xsd:element name="RespondentName" type="xsd:string" />
+			<xsd:element name="OriginatorName" type="xsd:string" />
+			<xsd:element name="OriginatorId" type="xsd:string" />
+			<xsd:element name="OriginatorAddr" type="xsd:string" />
+			<xsd:element name="BeneCustomerName" type="xsd:string" />
+			<xsd:element name="PurposeCode" type="xsd:string" />
+			<xsd:element name="Cheksum" type="xsd:string" />
+
+
+			<xsd:element name="TranactionId" type="xsd:string" />
+			<xsd:element name="TransactionDate" type="xsd:string" />
+			<xsd:element name="TranactionType" type="xsd:string" />
+			<xsd:element name="TransactionReference" type="xsd:string" />
+			<xsd:element name="BeneficiaryMobileNumber" type="xsd:string" />
+			<xsd:element name="MID" type="xsd:string" />
+			<xsd:element name="TID" type="xsd:string" />
+			<xsd:element name="Stan" type="xsd:string" />
+			<xsd:element name="AuthenticationCode" type="xsd:string" />
+			<xsd:element name="CreditAccountNumber" type="xsd:string" />
+			<xsd:element name="DebitAccountNumber" type="xsd:string" />
+			<xsd:element name="AuxillaryMID" type="xsd:string" />
+			<xsd:element name="AuxillaryTID" type="xsd:string" />
+			<xsd:element name="AuxillaryStan" type="xsd:string" />
+			<xsd:element name="AuxillaryRRN" type="xsd:string" />
+			<xsd:element name="AuxillaryErrorCode" type="xsd:string" />
+			<xsd:element name="AuxillaryAuthenticationCode" type="xsd:string" />
+			<xsd:element name="SettlementDate" type="xsd:string" />
+			<xsd:element name="ReversedFlag" type="xsd:string" />
+			<xsd:element name="MCC" type="xsd:string" />
+			<xsd:element name="MerchantRefNumber" type="xsd:string" />
+			<xsd:element name="PostingStatus1" type="xsd:string" />
+			<xsd:element name="PostingDate" type="xsd:string" />
+			<xsd:element name="PostingStatus2" type="xsd:string" />
+			<xsd:element name="PreviousTrxnId" type="xsd:string" />
+			<xsd:element name="ProcessingCode" type="xsd:string" />
+			<xsd:element name="ReversalRequiredFlag" type="xsd:string" />
+			<xsd:element name="Source" type="xsd:string" />
+			<xsd:element name="Channel" type="xsd:string" />
+			<xsd:element name="ReconId" type="xsd:string" />
+			<xsd:element name="OutStanding" type="xsd:string" />
+			<xsd:element name="Duration" type="xsd:string" />
+			<xsd:element name="Status" type="xsd:string" />
+			<xsd:element name="FailureCode" type="xsd:string" />
+			<xsd:element name="FailureReason" type="xsd:string" />
+			<xsd:element name="MerchantId" type="xsd:string" />
+			<xsd:element name="MessageType" type="xsd:string" />
+
+
+			<xsd:element name="TransactionInfo" type="xsd:string" />
+
+			<xsd:element name="IMPSHistoryDetails" type="tns:t_IMPSHistoryDetails" />
+
+
+			<xsd:complexType name="t_IMPSHistoryDetails">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:TranactionId" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:TransactionDate" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:MessageType" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:TranactionType" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:TransactionInfo" />
+
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneficiaryMobileNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneficiaryName" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneficiaryIFSC" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:RemitterMobileNumber" />
+
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:RemitterAccountNumber" />
+
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:RemitterName" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneficiaryAccountNumber" />
+
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:MID" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:TID" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Stan" />
+
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Amt" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:AuthenticationCode" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ErrorCode" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Remarks" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:CreditAccountNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:DebitAccountNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:AuxillaryMID" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:AuxillaryTID" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:AuxillaryStan" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:AuxillaryRRN" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:AuxillaryErrorCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:AuxillaryAuthenticationCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:SettlementDate" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ReversedFlag" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:MCC" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:MerchantRefNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:PostingStatus1" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:PostingDate" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:PostingStatus2" />
+
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:PreviousTrxnId" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ProcessingCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ReversalRequiredFlag" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Source" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Channel" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ReconId" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:OutStanding" />
+
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Duration" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Status" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:FailureCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:FailureReason" />
+					<xsd:element ref="tns:MerchantId" />
+
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ReqId" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ServiceProviderId" />
+
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="t_IMPSP2PTransaction">
+				<xsd:sequence>
+					<xsd:element ref="tns:ServiceProviderId" />
+					<xsd:element ref="tns:ReqId" />
+					<xsd:element ref="tns:ReqType" />
+					<xsd:element ref="tns:RemitterMobileNumber" />
+					<xsd:element ref="tns:RemitterName" />
+					<xsd:element ref="tns:BeneficiaryIFSC" />
+					<xsd:element ref="tns:BeneficiaryAccountNumber" />
+					<xsd:element ref="tns:Amt" />
+					<xsd:element ref="tns:Remarks" />
+					<xsd:element ref="tns:TrxnInitialChannelName" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ForeignRemittanceFlag" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:CorrespondentBankIFSC" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:RespondentAccountNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:RespondentName" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:OriginatorName" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:OriginatorId" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:OriginatorAddr" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneCustomerName" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:PurposeCode" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Cheksum" />
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IMPSP2PTransaction"
+				type="tns:t_IMPSP2PTransaction">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/IMPSP2PTransaction;XSDElementDeclaration=14$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_IMPSP2PTransactionResp">
+				<xsd:sequence>
+					<xsd:element ref="tns:ErrorCode" />
+					<xsd:element ref="tns:ErrorDescription" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:TrxnDate" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneficiaryName" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Cheksum" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IMPSP2PTransactionResp"
+				type="tns:t_IMPSP2PTransactionResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/IMPSP2PTransactionResp;XSDElementDeclaration=15$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:complexType name="t_IMPSHistoryResp">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ErrorCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ErrorDescription" />
+					<xsd:element maxOccurs="5" minOccurs="0"
+						ref="tns:IMPSHistoryDetails" />
+
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IMPSHistoryResp"
+				type="tns:t_IMPSHistoryResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage messageDefinition="/0/IMPSHistoryResp;XSDElementDeclaration=16$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_IMPSHistory">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1"
+						ref="tns:RemitterAccountNumber" />
+
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IMPSHistory"
+				type="tns:t_IMPSHistory">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage messageDefinition="/0/IMPSHistory;XSDElementDeclaration=17$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+
+
+
+			<xsd:complexType name="t_IMPSP2ATransaction">
+				<xsd:sequence>
+
+					<xsd:element ref="tns:ReqId" />
+					<xsd:element ref="tns:ReqType" />
+					<xsd:element ref="tns:BeneficiaryAccountNumber" />
+					<xsd:element ref="tns:BeneficiaryIFSC" />
+					<xsd:element ref="tns:RemitterMobileNumber" />
+					<xsd:element ref="tns:RemitterAccountNumber" />
+					<xsd:element ref="tns:RemitterName" />
+					<xsd:element ref="tns:Remarks" />
+					<xsd:element ref="tns:Amt" />
+
+
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IMPSP2ATransaction"
+				type="tns:t_IMPSP2ATransaction">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/IMPSP2ATransaction;XSDElementDeclaration=18$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_IMPSP2ATransactionResp">
+				<xsd:sequence>
+					<xsd:element ref="tns:ErrorCode" />
+					<xsd:element ref="tns:ErrorDescription" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ReqId" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:TrxnDate" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:BeneficiaryName" />
+
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="IMPSP2ATransactionResp"
+				type="tns:t_IMPSP2ATransactionResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/IMPSP2ATransactionResp;XSDElementDeclaration=19$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:schema>
+	</wsdl:types>
+
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="tns:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+	<wsdl:message name="IMPSHistory_in">
+		<wsdl:part element="tns:IMPSHistory" name="IMPSHistory" />
+	</wsdl:message>
+	<wsdl:message name="IMPSHistory_out">
+		<wsdl:part element="tns:IMPSHistoryResp" name="IMPSHistoryResp" />
+	</wsdl:message>
+	<wsdl:message name="IMPSP2ATransaction_in">
+		<wsdl:part element="tns:IMPSP2ATransaction" name="IMPSP2ATransaction" />
+	</wsdl:message>
+	<wsdl:message name="IMPSP2ATransaction_out">
+		<wsdl:part element="tns:IMPSP2ATransactionResp" name="IMPSP2ATransactionResp" />
+	</wsdl:message>
+
+
+
+
+	<wsdl:portType name="MS_IMPS_xmlPortType">
+
+
+		<wsdl:operation name="IMPSHistory">
+			<wsdl:input message="tns:IMPSHistory_in" name="IMPSHistory_Input" />
+			<wsdl:output message="tns:IMPSHistory_out" name="IMPSHistory_Output" />
+		</wsdl:operation>
+		<wsdl:operation name="IMPSP2ATransaction">
+			<wsdl:input message="tns:IMPSP2ATransaction_in" name="IMPSP2ATransaction_Input" />
+			<wsdl:output message="tns:IMPSP2ATransaction_out" name="IMPSP2ATransaction_Output" />
+		</wsdl:operation>
+
+	</wsdl:portType>
+	<wsdl:binding name="MS_IMPS_xmlSOAP_HTTP_Binding" type="tns:MS_IMPS_xmlPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+
+		<wsdl:operation name="IMPSHistory">
+			<soap:operation soapAction="" />
+			<wsdl:input name="IMPSHistory_Input">
+				<soap:body parts="IMPSHistory" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="IMPSHistory_Output">
+				<soap:body parts="IMPSHistoryResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="IMPSP2ATransaction">
+			<soap:operation soapAction="" />
+			<wsdl:input name="IMPSP2ATransaction_Input">
+				<soap:body parts="IMPSP2ATransaction" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="IMPSP2ATransaction_Output">
+				<soap:body parts="IMPSP2ATransactionResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+	</wsdl:binding>
+	<wsdl:service name="IMPSMWService">
+		<wsdl:port binding="tns:MS_IMPS_xmlSOAP_HTTP_Binding" name="IMPSMWPort">
+			<soap:address location="http://hackathon.axisbank.com:8523/IMPSMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

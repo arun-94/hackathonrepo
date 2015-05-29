@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SMSBankingMWService"
+	targetNamespace="http://tempuri.org/SMSBankingMWService" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:oldtns1="http://tempuri.org" xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:tns="http://tempuri.org/SMSBankingMWService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true" name="ServiceSoap12"
+					originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+	<wsdl:types>
+		<!-- <xsd:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org"
+			xmlns:mrm="http://tempuri.org/SMSBankingMWService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:include schemaLocation="xsd_xsd0.xsd" />
+		</xsd:schema> -->
+		
+		<xsd:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:mrm="http://tempuri.org/SMSBankingMWService" xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/SMSBankingMWService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            																																																																	<xsd:element name="subHeader" type="oldtns1:t_Header"/>
+            <xsd:element name="SMSBankingInfoDetails" type="oldtns1:t_SMSBankingInfoDetails"/>
+            <xsd:element ibmSchExtn:docRoot="true" name="SMSBankingInfoRequest" type="oldtns1:t_SMSBankingInfoReq"/>
+            <xsd:element ibmSchExtn:docRoot="true" name="SMSBankingInfoResponse" type="oldtns1:t_SMSBankingInfoResp"/>
+            <xsd:complexType name="t_Header">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="oldtns1:UniqueId"/>
+					<xsd:element ref="oldtns1:ServiceRequestId"/>
+					<xsd:element ref="oldtns1:ServiceRequestVersion"/>
+					<xsd:element ref="oldtns1:ChannelId"/>
+				</xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="t_SMSBankingInfoDetails">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="oldtns1:CustomerID"/>
+					<xsd:element ref="oldtns1:AccountNumber"/>
+					<xsd:element ref="oldtns1:MobileNumber"/>
+					<xsd:element ref="oldtns1:Relation"/>
+					<xsd:element ref="oldtns1:ModeOfOperation"/>
+					<xsd:element ref="oldtns1:DeletionFlag"/>
+				</xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="t_SMSBankingInfoReq">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element maxOccurs="1" minOccurs="1" ref="oldtns1:SearchFilterString"/>
+					<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:CustomerID"/>
+					<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:AccountNumber"/>
+					<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:MobileNumber"/>
+				</xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="t_SMSBankingInfoResp">
+				<xsd:sequence maxOccurs="1" minOccurs="0">
+					<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:NumberOfRecords"/>
+					<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:DetailsFound"/>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" ref="oldtns1:SMSBankingInfoDetails"/>
+				</xsd:sequence>
+			</xsd:complexType>
+            <xsd:element name="UniqueId" type="xsd:string"/>
+            <xsd:element name="ServiceRequestId" type="xsd:string"/>
+            <xsd:element name="ServiceRequestVersion" type="xsd:string"/>
+            <xsd:element name="ChannelId" type="xsd:string"/>
+            <xsd:element name="CustomerID" type="xsd:string"/>
+            <xsd:element name="SearchFilterString" type="xsd:string"/>
+            <xsd:element name="AccountNumber" type="xsd:string"/>
+            <xsd:element name="MobileNumber" type="xsd:string"/>
+            <xsd:element name="Relation" type="xsd:string"/>
+            <xsd:element name="ModeOfOperation" type="xsd:string"/>
+            <xsd:element name="DeletionFlag" type="xsd:string"/>
+            <xsd:element name="DetailsFound" type="xsd:string"/>
+            <xsd:element name="NumberOfRecords" type="xsd:string"/>
+        </xsd:schema>
+		
+	</wsdl:types>
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+
+
+	<wsdl:message name="getSMSBankingInfoRequestMsg">
+		<wsdl:part element="oldtns1:SMSBankingInfoRequest" name="SMSBankingInfoRequest" />
+	</wsdl:message>
+	<wsdl:message name="getSMSBankingInfoResponseMsg">
+		<wsdl:part element="oldtns1:SMSBankingInfoResponse" name="SMSBankingInfoResponse" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="ServiceSoap">
+
+
+
+		<wsdl:operation name="getAccountDetails">
+			<wsdl:input message="tns:getSMSBankingInfoRequestMsg"
+				name="getSMSBankingInfoRequest" />
+			<wsdl:output message="tns:getSMSBankingInfoResponseMsg"
+				name="getSMSBankingInfoResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+
+
+	<wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+		<soap12:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+
+
+		<wsdl:operation name="getAccountDetails">
+			<soap12:operation
+				soapAction="http://microsoft.com/webservices/getSMSBankingInfo" />
+			<wsdl:input name="getSMSBankingInfoRequest">
+				<soap12:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getSMSBankingInfoResponse">
+				<soap12:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="SMSBankingMWService">
+		<wsdl:port binding="tns:ServiceSoap12" name="ServiceSoap12">
+			<soap12:address location="http://hackathon.axisbank.com:8523/SMSBankingMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

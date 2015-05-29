@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="NEFTMWService"
+	targetNamespace="http://tempuri.org/NEFTMWService" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://tempuri.org/NEFTMWService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true" name="PostNEFT"
+					originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+	<wsdl:types>
+		<!-- <xsd:schema targetNamespace="http://tempuri.org" xmlns:mrm="http://tempuri.org/NEFTMWService" 
+			xmlns:tns="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd" 
+			/> </xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/NEFTMWService"
+			xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+			<xsd:element ibmSchExtn:docRoot="true" name="PostNEFT">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="oldtns1:TrxnDtls" />
+						<xsd:element ref="oldtns1:RemitterDetails" />
+						<xsd:element ref="oldtns1:BeneficiaryDetails" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ibmSchExtn:docRoot="true" name="PostNEFTResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="oldtns1:TransactionResponse" />
+						<xsd:element ref="oldtns1:TransactionStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TrxnDtls">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" ref="oldtns1:UniqueIdentfier" />
+						<xsd:element minOccurs="1" ref="oldtns1:TotalAmount" />
+						<xsd:element minOccurs="1" ref="oldtns1:Currency" />
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="MessageType" type="xsd:string" />
+			<xsd:element name="ChannelID" type="xsd:string" />
+			<xsd:element name="UniqueIdentfier" type="xsd:string" />
+			<xsd:element name="NumericRemittanceFlag" type="xsd:integer" />
+			<xsd:element name="NumericPaymentFlag" type="xsd:integer" />
+			<xsd:element name="TotalAmount" type="xsd:decimal" />
+			<xsd:element name="MessageVersion" type="xsd:string" />
+			<xsd:element name="Mode" type="xsd:integer" />
+			<xsd:element name="RemitterDetails">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterAccountNumber" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:RemitterAccountCurrency" />
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterName" />
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterAddressLine1" />
+						<xsd:element minOccurs="1" ref="oldtns1:RemitterMobileNumber" />
+						<xsd:element minOccurs="1" ref="oldtns1:OrderInstituteName" />
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RemitterAccountType" type="xsd:integer" />
+			<xsd:element name="RemitterAccountNumber" type="xsd:string" />
+			<xsd:element name="RemitterAccountCurrency" type="xsd:string" />
+			<xsd:element name="RemitterName" type="xsd:string" />
+			<xsd:element name="RemitterAddressLine1" type="xsd:string" />
+			<xsd:element name="RemitterMobileNumber" type="xsd:string" />
+			<xsd:element name="OrderInstituteName" type="xsd:string" />
+			<xsd:element name="ExternalReferenceFlag" type="xsd:integer" />
+			<xsd:element name="PreBookFlag" type="xsd:integer" />
+
+
+			<xsd:element name="BeneficiaryDetails">
+				<xsd:complexType>
+					<xsd:sequence>
+					
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryAddressLine1" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryAddressLine2" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryAddressLine3" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryAddressLine4" />
+						<xsd:element minOccurs="1" ref="oldtns1:BeneficiaryEmailId" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryMobileNumber" />
+						<xsd:element minOccurs="1" ref="oldtns1:IFSCCode" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryAccountNumber" />
+						<xsd:element minOccurs="1"
+							ref="oldtns1:BeneficiaryAccountCurrency" />
+						<xsd:element minOccurs="1" ref="oldtns1:BeneficiaryName" />
+						<xsd:element minOccurs="1" ref="oldtns1:Currency" />
+						<xsd:element minOccurs="1" ref="oldtns1:ValueDate" />
+						<xsd:element minOccurs="1" ref="oldtns1:Amount" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="RemitterReference" type="xsd:integer" />
+			<xsd:element name="BeneficiaryAddressLine1" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine2" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine3" type="xsd:string" />
+			<xsd:element name="BeneficiaryAddressLine4" type="xsd:string" />
+			<xsd:element name="BeneficiaryEmailId" type="xsd:string" />
+			<xsd:element name="BeneficiaryMobileNumber" type="xsd:string" />
+			<xsd:element name="BeneficiaryBankReferenceType" type="xsd:integer" />
+			<xsd:element name="IFSCCode" type="xsd:string" />
+			<xsd:element name="BeneficiaryAccountNumber" type="xsd:string" />
+			<xsd:element name="BeneficiaryAccountCurrency" type="xsd:string" />
+			<xsd:element name="BeneficiaryName" type="xsd:string" />
+			<xsd:element name="ClearingChannelId" type="xsd:integer" />
+			<xsd:element name="Currency" type="xsd:string" />
+			<xsd:element name="ChargeOption" type="xsd:integer" />
+			<xsd:element name="ValueDate" type="xsd:string" />
+			<xsd:element name="Direction" type="xsd:integer" />
+			<xsd:element name="TaxAmount" type="xsd:decimal" />
+			<xsd:element name="Amount" type="xsd:decimal" />
+			<xsd:element name="TransactionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" ref="oldtns1:TransactionPostType" />
+						<xsd:element minOccurs="0" ref="oldtns1:TransactionPostNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:SequenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:ErrorId" />
+						<xsd:element minOccurs="0" ref="oldtns1:ErrorDescription" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:ExternalReferenceNumber" />
+						<xsd:element minOccurs="0"
+							ref="oldtns1:InternalReferenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:String1" />
+						<xsd:element minOccurs="0" ref="oldtns1:Date1" />
+						<xsd:element minOccurs="0" ref="oldtns1:Number1" />
+						<xsd:element minOccurs="0" ref="oldtns1:String2" />
+						<xsd:element minOccurs="0" ref="oldtns1:Date2" />
+						<xsd:element minOccurs="0" ref="oldtns1:Number2" />
+						<xsd:element minOccurs="0" ref="oldtns1:SourceReferenceNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:ExecutionDate" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TransactionPostType" type="xsd:integer" />
+			<xsd:element name="TransactionPostNumber" type="xsd:integer" />
+			<xsd:element name="SequenceNumber" type="xsd:integer" />
+			<xsd:element name="ErrorId" type="xsd:string" />
+			<xsd:element name="ErrorDescription" type="xsd:string" />
+			<xsd:element name="ExternalReferenceNumber" type="xsd:string" />
+			<xsd:element name="InternalReferenceNumber" type="xsd:string" />
+			<xsd:element name="String1" type="xsd:string" />
+			<xsd:element name="Date1" type="xsd:string" />
+			<xsd:element name="Number1" type="xsd:integer" />
+			<xsd:element name="String2" type="xsd:string" />
+			<xsd:element name="Date2" type="xsd:string" />
+			<xsd:element name="Number2" type="xsd:integer" />
+			<xsd:element name="SourceReferenceNumber" type="xsd:string" />
+			<xsd:element name="ExecutionDate" type="xsd:string" />
+			<xsd:element name="TransactionStatus">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" ref="oldtns1:SuccessFlag" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SuccessFlag" type="xsd:integer" />
+		</xsd:schema>
+
+	</wsdl:types>
+
+
+	<wsdl:message name="PostNEFT">
+		<wsdl:part element="oldtns1:PostNEFT" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="PostNEFTResponse">
+		<wsdl:part element="oldtns1:PostNEFTResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="PostNEFT">
+		<wsdl:operation name="PostNEFT">
+			<wsdl:documentation />
+			<wsdl:input message="tns:PostNEFT">
+			</wsdl:input>
+			<wsdl:output message="tns:PostNEFTResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PostNEFT" type="tns:PostNEFT">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="PostNEFT">
+			<soap:operation soapAction="http://com.tcs.bancs/CTBT1234/PostNEFT" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="NEFTMWService">
+		<wsdl:documentation />
+		<wsdl:port binding="tns:PostNEFT" name="PostNEFT">
+			<soap:address location="http://hackathon.axisbank.com:8523/NEFTMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

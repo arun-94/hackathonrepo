@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CoreMWService"
+	targetNamespace="http://tempuri.org/CoreMWService" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:tns="http://tempuri.org/CoreMWService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="CoreMWServiceSOAP_HTTP_Binding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+	<wsdl:types>
+		
+	
+	 <xsd:schema targetNamespace="http://tempuri.org"
+	xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/CoreMWService"
+	xmlns:oldtns1="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenv11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://tempuri.org"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element ibmSchExtn:docRoot="true" name="IFT_Request"
+		type="oldtns1:t_IFT_Request" />
+	<xsd:element ibmSchExtn:docRoot="true" name="IFT_Response"
+		type="oldtns1:t_IFT_Response" />
+	<xsd:element name="IFT_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Amount" />
+				<xsd:element ref="oldtns1:DebitInfo" />
+				<xsd:element ref="oldtns1:CreditInfo" />
+
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="IFT_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element ref="oldtns1:Amount" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="GetBalance_Request"
+		type="oldtns1:t_GetBalance_Request" />
+	<xsd:element ibmSchExtn:docRoot="true" name="GetBalance_Response"
+		type="oldtns1:t_GetBalance_Response" />
+	<xsd:element name="GetBalance_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GetBalance_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element maxOccurs="5" minOccurs="0"
+					ref="oldtns1:AccountBalance" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="MultiAccntBal_Request"
+		type="oldtns1:t_MultiAccntBal_Request" />
+	<xsd:element ibmSchExtn:docRoot="true" name="MultiAccntBal_Response"
+		type="oldtns1:t_MultiAccntBal_Response" />
+	<xsd:element name="MultiAccntBal_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element maxOccurs="10" minOccurs="1"
+					ref="oldtns1:AccountInfo" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MultiAccntBal_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element maxOccurs="10" minOccurs="0"
+					ref="oldtns1:AccountDetail" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element ibmSchExtn:docRoot="true" name="MiniStatement_Request"
+		type="oldtns1:t_MiniStatement_Request" />
+	<xsd:element ibmSchExtn:docRoot="true" name="MiniStatement_Response"
+		type="oldtns1:t_MiniStatement_Response" />
+	<xsd:element name="MiniStatement_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MiniStatement_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element maxOccurs="6" minOccurs="0"
+					ref="oldtns1:AccountBalance" />
+
+				<xsd:element maxOccurs="1" minOccurs="0" ref="oldtns1:TrnDetail" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeBook_Request" type="oldtns1:t_ChequeBook_Request" />
+	<xsd:element name="ChequeBook_Response" type="oldtns1:t_ChequeBook_Response" />
+	<xsd:element name="ChequeBook_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:CustomerId" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:NoOfLeaves" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeBook_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Status" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeStatusInq_Request" type="oldtns1:t_ChequeStatusInq_Request" />
+	<xsd:element name="ChequeStatusInq_Response" type="oldtns1:t_ChequeStatusInq_Response" />
+	<xsd:element name="ChequeStatusInq_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:ChequeDetails" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeStatusInq_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element ref="oldtns1:ChequeStatus" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="StopChequeInstruction_Request" type="oldtns1:t_StopChequeInstruction_Request" />
+	<xsd:element name="StopChequeInstruction_Response"
+		type="oldtns1:t_StopChequeInstruction_Response" />
+	<xsd:element name="StopChequeInstruction_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:ChequeDetails" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="StopChequeInstruction_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:ChequeStatus" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LienMarking_Request" type="oldtns1:t_LienMarking_Request" />
+	<xsd:element name="LienMarking_Response" type="oldtns1:t_LienMarking_Response" />
+	<xsd:element name="LienMarking_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Amount" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:LienCode" />
+				<xsd:element ref="oldtns1:Lien_Identifier" />
+				<xsd:element ref="oldtns1:Lien_Remarks" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LienMarking_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Status" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LienRemoval_Request" type="oldtns1:t_LienRemoval_Request" />
+	<xsd:element name="LienRemoval_Response" type="oldtns1:t_LienRemoval_Response" />
+	<xsd:element name="LienRemoval_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Amount" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:LienCode" />
+				<xsd:element ref="oldtns1:Lien_Identifier" />
+				<xsd:element ref="oldtns1:Lien_Remarks" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LienRemoval_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:RequestDate" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:Status" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeBookInquiry_Request" type="oldtns1:t_ChequeBookInq_Request" />
+	<xsd:element name="ChequeBookInquiry_Response" type="oldtns1:t_ChequeBookInq_Response" />
+	<xsd:element ibmSchExtn:docRoot="true" name="Fault"
+		type="oldtns1:t_Fault" />
+	<xsd:element name="Header">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:UniqueId" />
+				<xsd:element ref="oldtns1:ServiceRequestId" />
+				<xsd:element ref="oldtns1:ServiceRequestVersion" />
+				<xsd:element ref="oldtns1:ChannelId" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AccountInfo">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+
+
+				<xsd:element ref="oldtns1:AccountId" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AccountBalance">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:BalanceType" />
+				<xsd:element ref="oldtns1:BalanceAmount" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BalanceAmount">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:Amount" />
+				<xsd:element ref="oldtns1:Currency" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DebitInfo">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:DebitRemarks" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CreditInfo">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:CreditRemarks" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChargesInfo">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:CreditDebitFlag" />
+				<xsd:element ref="oldtns1:Amount" />
+				<xsd:element ref="oldtns1:Currency" />
+				<xsd:element ref="oldtns1:AccountInfo" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="UniqueId" type="xsd:string" />
+	<xsd:element name="ServiceRequestId" type="xsd:string" />
+	<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+	<xsd:element name="ChannelId" type="xsd:string" />
+	<xsd:element name="BankId" type="xsd:string" />
+	<xsd:element name="AccountId" type="xsd:string" />
+	<xsd:element name="BranchId" type="xsd:string" />
+	<xsd:element name="RequestDate" type="xsd:date" />
+	<xsd:element name="Status" type="xsd:string" />
+	<xsd:element name="BalanceType" type="xsd:string" />
+	<xsd:element name="Amount" type="xsd:string" />
+	<xsd:element name="Currency" type="xsd:string" />
+	<xsd:element name="DebitRemarks" type="xsd:string" />
+	<xsd:element name="CreditRemarks" type="xsd:string" />
+	<xsd:element name="PartTrnRmks" type="xsd:string" />
+	<xsd:complexType name="t_IFT_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:IFT_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_IFT_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:IFT_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ErrorDescription" type="xsd:string" />
+	<xsd:complexType name="t_GetBalance_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:GetBalance_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_GetBalance_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:GetBalance_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_MultiAccntBal_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:MultiAccntBal_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_MultiAccntBal_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:MultiAccntBal_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="CreditDebitFlag" type="xsd:string" />
+	<xsd:complexType name="t_MiniStatement_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:MiniStatement_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_MiniStatement_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:MiniStatement_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ChequeBook_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:ChequeBook_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ChequeBook_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:ChequeBook_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ChequeStatusInq_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:ChequeStatusInq_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ChequeStatusInq_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:ChequeStatusInq_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_StopChequeInstruction_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:StopChequeInstruction_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_StopChequeInstruction_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:StopChequeInstruction_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_Fault">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:FaultCode" />
+			<xsd:element ref="oldtns1:FaultDesc" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="FaultCode" type="xsd:string" />
+	<xsd:element name="FaultDesc" type="xsd:string" />
+	<xsd:element name="AccountDetail">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:AccountId" />
+				<xsd:element maxOccurs="6" minOccurs="0"
+					ref="oldtns1:AccountBalance" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeDetails">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:ChequeNo" />
+				<xsd:element minOccurs="0" ref="oldtns1:NoOfLeaves" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeNo" type="xsd:string" />
+	<xsd:element name="NoOfLeaves" type="xsd:string" />
+	<xsd:element name="ChequeStatus" type="xsd:string" />
+	<xsd:element name="CustomerId" type="xsd:string" />
+	<xsd:element name="TrnDetail">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element maxOccurs="10" minOccurs="0"
+					ref="oldtns1:TransactionDetails" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="TransactionDetails" type="xsd:string" />
+	<xsd:complexType name="t_LienMarking_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:LienMarking_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_LienMarking_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:LienMarking_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="LienCode" type="xsd:string" />
+	<xsd:element name="Lien_Remarks" type="xsd:string" />
+	<xsd:element name="Lien_Identifier" type="xsd:string" />
+	<xsd:complexType name="t_LienRemoval_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:LienRemoval_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_LienRemoval_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:LienRemoval_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ChequeBookInq_Request">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:ChequeBookInquiry_Req_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="t_ChequeBookInq_Response">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:Header" />
+			<xsd:element ref="oldtns1:ChequeBookInquiry_Rsp_Body" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ChequeBookInquiry_Req_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:AccountInfo" />
+				<xsd:element ref="oldtns1:FromDate" />
+				<xsd:element ref="oldtns1:ToDate" />
+				<xsd:element ref="oldtns1:Currency" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeBookInquiry_Rsp_Body">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:Status" />
+				<xsd:element maxOccurs="unbounded" minOccurs="0"
+					ref="oldtns1:ChequeBookInquiryRecords" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChequeBookInquiryRecords">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:element ref="oldtns1:BeginChequeAlpha" />
+				<xsd:element ref="oldtns1:BeginChequeNumber" />
+				<xsd:element ref="oldtns1:ChequeBookIssuedDate" />
+				<xsd:element ref="oldtns1:ChequeBookNoOfLeaves" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="FromDate" type="xsd:string" />
+	<xsd:element name="ToDate" type="xsd:string" />
+	<xsd:element name="BeginChequeAlpha" type="xsd:string" />
+	<xsd:element name="BeginChequeNumber" type="xsd:string" />
+	<xsd:element name="ChequeBookIssuedDate" type="xsd:string" />
+	<xsd:element name="ChequeBookNoOfLeaves" type="xsd:string" />
+</xsd:schema>
+	 
+	 
+	</wsdl:types>
+	<wsdl:message name="MultiAccntBal_in">
+		<wsdl:part element="oldtns1:MultiAccntBal_Request" name="MultiAccntBal_Request" />
+	</wsdl:message>
+	<wsdl:message name="MultiAccntBal_out">
+		<wsdl:part element="oldtns1:MultiAccntBal_Response" name="MultiAccntBal_Response" />
+	</wsdl:message>
+
+	<wsdl:message name="WithInBankTransfer_in">
+		<wsdl:part element="oldtns1:IFT_Request" name="IFT_Request" />
+	</wsdl:message>
+	<wsdl:message name="WithInBankTransfer_out">
+		<wsdl:part element="oldtns1:IFT_Response" name="IFT_Response" />
+	</wsdl:message>
+
+	<wsdl:message name="GetBalance_in">
+		<wsdl:part element="oldtns1:GetBalance_Request" name="GetBalance_Request" />
+	</wsdl:message>
+	<wsdl:message name="GetBalance_out">
+		<wsdl:part element="oldtns1:GetBalance_Response" name="GetBalance_Response" />
+	</wsdl:message>
+
+
+	<wsdl:message name="MiniStatement_in">
+		<wsdl:part element="oldtns1:MiniStatement_Request" name="MiniStatement_Request" />
+	</wsdl:message>
+	<wsdl:message name="MiniStatement_out">
+		<wsdl:part element="oldtns1:MiniStatement_Response" name="MiniStatement_Response" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="CoreMWServicePortType">
+		<wsdl:operation name="MultiAccntBal">
+			<wsdl:input message="tns:MultiAccntBal_in" name="MultiAccntBal_Input" />
+			<wsdl:output message="tns:MultiAccntBal_out" name="MultiAccntBal_Output" />
+
+		</wsdl:operation>
+		<wsdl:operation name="WithInBankTransfer">
+			<wsdl:input message="tns:WithInBankTransfer_in" name="WithInBankTransfer_Input" />
+			<wsdl:output message="tns:WithInBankTransfer_out" name="WithInBankTransfer_Output" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBalance">
+			<wsdl:input message="tns:GetBalance_in" name="GetBalance_Input" />
+			<wsdl:output message="tns:GetBalance_out" name="GetBalance_Output" />
+		</wsdl:operation>
+		<wsdl:operation name="MiniStatement">
+			<wsdl:input message="tns:MiniStatement_in" name="MiniStatement_Input" />
+			<wsdl:output message="tns:MiniStatement_out" name="MiniStatement_Output" />
+		</wsdl:operation>
+
+
+	</wsdl:portType>
+	<wsdl:binding name="CoreMWServiceSOAP_HTTP_Binding" type="tns:CoreMWServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="MultiAccntBal">
+			<soap:operation soapAction="" />
+			<wsdl:input name="MultiAccntBal_Input">
+				<soap:body parts="MultiAccntBal_Request" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="MultiAccntBal_Output">
+				<soap:body parts="MultiAccntBal_Response" use="literal" />
+			</wsdl:output>
+
+		</wsdl:operation>
+		<wsdl:operation name="WithInBankTransfer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="WithInBankTransfer_Input">
+				<soap:body parts="IFT_Request" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="WithInBankTransfer_Output">
+				<soap:body parts="IFT_Response" use="literal" />
+			</wsdl:output>
+
+		</wsdl:operation>
+		<wsdl:operation name="GetBalance">
+			<soap:operation soapAction="" />
+			<wsdl:input name="GetBalance_Input">
+				<soap:body parts="GetBalance_Request" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetBalance_Output">
+				<soap:body parts="GetBalance_Response" use="literal" />
+			</wsdl:output>
+
+		</wsdl:operation>
+		<wsdl:operation name="MiniStatement">
+			<soap:operation soapAction="" />
+			<wsdl:input name="MiniStatement_Input">
+				<soap:body parts="MiniStatement_Request" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="MiniStatement_Output">
+				<soap:body parts="MiniStatement_Response" use="literal" />
+			</wsdl:output>
+
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CoreMWServiceSOAP_HTTP_Service">
+		<wsdl:port binding="tns:CoreMWServiceSOAP_HTTP_Binding"
+			name="CoreMWServiceSOAP_HTTP_Port">
+			<soap:address location="http://hackathon.axisbank.com:8523/CoreMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

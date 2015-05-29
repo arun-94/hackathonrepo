@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EuroVasMWService"
+	targetNamespace="http://tempuri.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="MS_EuroVasSOAP_HTTP_Binding" originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+
+	<wsdl:types>
+
+		<!-- <xsd:schema targetNamespace="http://tempuri.org"> <xsd:include schemaLocation="xsd_xsd0.xsd" 
+			/> </xsd:schema> -->
+
+		<xsd:schema targetNamespace="http://tempuri.org"
+			xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:tns="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+			<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+				type="tns:t_Header" />
+			<xsd:complexType name="t_Header">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element ref="tns:UniqueId" />
+					<xsd:element ref="tns:ServiceRequestId" />
+					<xsd:element ref="tns:ServiceRequestVersion" />
+					<xsd:element ref="tns:ChannelId" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="UniqueId" type="xsd:string" />
+			<xsd:element name="ServiceRequestId" type="xsd:string" />
+			<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+			<xsd:element name="ChannelId" type="xsd:string" />
+
+			<xsd:element name="MerchantReferenceNumber">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="MerchantCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="3" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="UserName">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="UserPassword">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="PaymentProvider">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="3" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="PaymentMode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="2" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ChannelCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="3" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ServiceCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="2" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ConsumerNumber">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+
+						<xsd:maxLength value="12" />
+					</xsd:restriction>
+
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Amt">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="StoreCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="TerminalCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CustomerIdentifier">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="TCFlag">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SPCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="3" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SSPCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Filler1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Filler2">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Filler3">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Filler4">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Filler5">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:complexType name="t_MobileTopUpRequest">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantReferenceNumber" />
+
+					<xsd:element ref="tns:ConsumerNumber" />
+					<xsd:element ref="tns:Amt" />
+
+					<xsd:element ref="tns:CustomerIdentifier" />
+					<xsd:element ref="tns:TCFlag" />
+					<xsd:element ref="tns:SPCode" />
+					<xsd:element ref="tns:SSPCode" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Filler1" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Filler2" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Filler3" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Filler4" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:Filler5" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="MobileTopUpRequest"
+				type="tns:t_MobileTopUpRequest">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/MobileTopUpRequest;XSDElementDeclaration=21$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TrxnReferenceNumber">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="20" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+
+
+			<xsd:element name="ErrorCode" type="xsd:string" />
+
+
+			<xsd:element name="OperatorRefNumber" type="xsd:string" />
+
+			<xsd:element name="ErrorDescription" type="xsd:string" />
+
+
+
+			<xsd:element name="RspAction" type="xsd:string" />
+
+
+
+			<xsd:complexType name="t_MobileTopUpResponse">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:MerchantReferenceNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:TrxnReferenceNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ErrorCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:OperatorRefNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ErrorDescription" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:RspAction" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true" name="MobileTopUpResponse"
+				type="tns:t_MobileTopUpResponse">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/MobileTopUpResponse;XSDElementDeclaration=27$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_TransactionStatusRequest">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantReferenceNumber" />
+					<xsd:element ref="tns:TrxnReferenceNumber" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true"
+				name="TransactionStatusRequest" type="tns:t_TransactionStatusRequest">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/TransactionStatusRequest;XSDElementDeclaration=28$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_TransactionStatusResponse">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:MerchantReferenceNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:TrxnReferenceNumber" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:ErrorCode" />
+					<xsd:element maxOccurs="1" minOccurs="0"
+						ref="tns:ErrorDescription" />
+					<xsd:element maxOccurs="1" minOccurs="0" ref="tns:RspAction" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element ibmSchExtn:docRoot="true"
+				name="TransactionStatusResponse" type="tns:t_TransactionStatusResponse">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/TransactionStatusResponse;XSDElementDeclaration=29$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_consumerVerificationReq">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantCode" />
+					<xsd:element ref="tns:UserName" />
+					<xsd:element ref="tns:UserPassword" />
+					<xsd:element ref="tns:ServiceCode" />
+					<xsd:element ref="tns:ConsumerNumber" />
+					<xsd:element ref="tns:Amt" />
+					<xsd:element ref="tns:SPCode" />
+					<xsd:element ref="tns:SSPCode" />
+					<xsd:element ref="tns:Filler1" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="consumerVerificationReq" type="tns:t_consumerVerificationReq">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/consumerVerificationReq;XSDElementDeclaration=30$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_consumerVerificationResp">
+				<xsd:sequence>
+					<xsd:element ref="tns:ErrorCode" />
+					<xsd:element ref="tns:ErrorDescription" />
+					<xsd:element ref="tns:RspAction" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="consumerVerificationResp" type="tns:t_consumerVerificationResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/consumerVerificationResp;XSDElementDeclaration=31$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_merchantBalInqReq">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantCode" />
+					<xsd:element ref="tns:UserName" />
+					<xsd:element ref="tns:UserPassword" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="merchantBalInqReq" type="tns:t_merchantBalInqReq">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/merchantBalInqReq;XSDElementDeclaration=32$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_merchantBalInqResp">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantCode" />
+					<xsd:element ref="tns:Amt" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="merchantBalInqResp" type="tns:t_merchantBalInqResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/merchantBalInqResp;XSDElementDeclaration=33$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_changeUserPwdReq">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantCode" />
+					<xsd:element ref="tns:UserName" />
+					<xsd:element ref="tns:UserPassword" />
+					<xsd:element ref="tns:NewUserPassword" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="changeUserPwdReq" type="tns:t_changeUserPwdReq">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage messageDefinition="/0/changeUserPwdReq;XSDElementDeclaration=34$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NewUserPassword">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:complexType name="t_changeUserPwdResp">
+				<xsd:sequence>
+					<xsd:element ref="tns:ErrorCode" />
+					<xsd:element ref="tns:ErrorDescription" />
+					<xsd:element ref="tns:RspAction" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="changeUserPwdResp" type="tns:t_changeUserPwdResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/changeUserPwdResp;XSDElementDeclaration=36$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_servicePrvStatusReq">
+				<xsd:sequence>
+					<xsd:element ref="tns:MerchantCode" />
+					<xsd:element ref="tns:UserName" />
+					<xsd:element ref="tns:UserPassword" />
+					<xsd:element ref="tns:ServiceCode" />
+					<xsd:element ref="tns:SPCode" />
+					<xsd:element ref="tns:SSPCode" />
+					<xsd:element ref="tns:ConsumerNumber" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="servicePrvStatusReq" type="tns:t_servicePrvStatusReq">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/servicePrvStatusReq;XSDElementDeclaration=37$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:complexType name="t_servicePrvStatusResp">
+				<xsd:sequence>
+					<xsd:element ref="tns:ErrorCode" />
+					<xsd:element ref="tns:ErrorDescription" />
+					<xsd:element ref="tns:RspAction" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="servicePrvStatusResp" type="tns:t_servicePrvStatusResp">
+				<xsd:annotation>
+					<xsd:appinfo source="WMQI_APPINFO">
+						<MRMessage
+							messageDefinition="/0/servicePrvStatusResp;XSDElementDeclaration=38$MRObject" />
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:schema>
+
+	</wsdl:types>
+
+
+
+	<wsdl:message name="subHeader">
+		<wsdl:part element="tns:subHeader" name="subHeader" />
+	</wsdl:message>
+
+	<wsdl:message name="MobileTopUpRequest_in">
+		<wsdl:part element="tns:MobileTopUpRequest" name="MobileTopUpRequest" />
+	</wsdl:message>
+	<wsdl:message name="MobileTopUpRequest_out">
+		<wsdl:part element="tns:MobileTopUpResponse" name="mobileTopUpResp" />
+	</wsdl:message>
+
+	<wsdl:message name="TransactionStatusRequest_in">
+		<wsdl:part element="tns:TransactionStatusRequest" name="TransactionStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="TransactionStatusRequest_out">
+		<wsdl:part element="tns:TransactionStatusResponse" name="TransactionStatusResponse" />
+	</wsdl:message>
+
+
+
+
+
+
+	<wsdl:portType name="MS_EuroVasPortType">
+
+
+
+		<wsdl:operation name="TransactionStatusRequest">
+			<wsdl:input message="tns:TransactionStatusRequest_in"
+				name="TransactionStatusRequest_Input" />
+			<wsdl:output message="tns:TransactionStatusRequest_out"
+				name="TransactionStatusRequest_Output" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="MobileTopUpRequest">
+			<wsdl:input message="tns:MobileTopUpRequest_in" name="MobileTopUpRequest_Input" />
+			<wsdl:output message="tns:MobileTopUpRequest_out" name="MobileTopUpRequest_Output" />
+		</wsdl:operation>
+
+
+
+	</wsdl:portType>
+
+
+
+	<wsdl:binding name="MS_EuroVasSOAP_HTTP_Binding" type="tns:MS_EuroVasPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+
+		<wsdl:operation name="MobileTopUpRequest">
+			<soap:operation soapAction="" />
+			<wsdl:input name="MobileTopUpRequest_Input">
+				<soap:body parts="MobileTopUpRequest" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="MobileTopUpRequest_Output">
+				<soap:body parts="mobileTopUpResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="TransactionStatusRequest">
+			<soap:operation soapAction="" />
+			<wsdl:input name="TransactionStatusRequest_Input">
+				<soap:body parts="TransactionStatusRequest" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="TransactionStatusRequest_Output">
+				<soap:body parts="TransactionStatusResponse" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+
+
+	</wsdl:binding>
+	<wsdl:service name="EuroVasMWService">
+		<wsdl:port binding="tns:MS_EuroVasSOAP_HTTP_Binding" name="EuroVasPort">
+			<soap:address location="http://hackathon.axisbank.com:8523/EuroVasMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

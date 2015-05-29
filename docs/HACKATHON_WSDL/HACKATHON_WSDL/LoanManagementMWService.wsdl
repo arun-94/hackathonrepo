@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	name="LoanManagementMWService" targetNamespace="http://tempuri.org/LoanManagementMWService"
+	xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/LoanManagementMWService"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:documentation>
+		<wsdl:appinfo source="WMQI_APPINFO">
+			<MRWSDLAppInfo imported="true">
+				<binding hasEncoding="false" imported="true"
+					name="LoanManagementMWServiceSOAP_HTTP_Binding"
+					originalBindingStyle="document" />
+			</MRWSDLAppInfo>
+		</wsdl:appinfo>
+	</wsdl:documentation>
+
+
+
+
+	<wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://tempuri.org" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions"
+	xmlns:mrm="http://tempuri.org/LoanManagementMWService" xmlns:oldtns1="http://tempuri.org"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+
+
+	<xsd:element name="UniqueId" type="xsd:string" />
+	<xsd:element name="ServiceRequestId" type="xsd:string" />
+	<xsd:element name="ServiceRequestVersion" type="xsd:string" />
+	<xsd:element name="ChannelId" type="xsd:string" />
+	<xsd:element name="LoanCustId" type="xsd:string" />
+	<xsd:element name="PanNumber" type="xsd:string" />
+	<xsd:element name="MobileNumber" type="xsd:string" />
+	<xsd:element name="CustomerAccountId" type="xsd:string" />
+	<xsd:element name="LoanCount" type="xsd:string" />
+	<xsd:element name="LoanFoundFlag" type="xsd:string" />
+	<xsd:element name="AgreementNumber" type="xsd:string" />
+	<xsd:element name="CBSCustID" type="xsd:string" />
+	<xsd:element name="errCode" type="xsd:string" />
+	<xsd:element name="errDesc" type="xsd:string" />
+	<xsd:element name="CustomerAccountName" type="xsd:string" />
+	<xsd:element name="BranchName" type="xsd:string" />
+	<xsd:element name="SanctionedAmount" type="xsd:string" />
+	<xsd:element name="DateOfSanctioned" type="xsd:string" />
+	<xsd:element name="OutstandingAmount">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:decimal">
+				<xsd:minInclusive value="1" />
+				<xsd:fractionDigits value="2" />
+				<xsd:totalDigits value="18" />
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="Currencycode" type="xsd:string" />
+	<xsd:element name="AmountDisbursed" type="xsd:string" />
+	<xsd:element name="AuthenticationDate" type="xsd:string" />
+	<xsd:element name="TypeOfLoan" type="xsd:string" />
+	<xsd:element name="ZipCode" type="xsd:string" />
+	<xsd:element name="ConstantCode" type="xsd:string" />
+	<xsd:element name="DOB" type="xsd:string" />
+	<xsd:element name="PassPortNumber" type="xsd:string" />
+	<xsd:element name="EmailID" type="xsd:string" />
+	<xsd:element name="ProdCd" type="xsd:string" />
+	<xsd:complexType name="t_Header">
+		<xsd:sequence maxOccurs="1" minOccurs="1">
+			<xsd:element ref="oldtns1:UniqueId" />
+			<xsd:element ref="oldtns1:ServiceRequestId" />
+			<xsd:element ref="oldtns1:ServiceRequestVersion" />
+			<xsd:element ref="oldtns1:ChannelId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="subHeader"
+		type="oldtns1:t_Header" />
+	<xsd:complexType name="t_LoanAccountsReq">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" ref="oldtns1:LoanCustId" />
+			<xsd:element minOccurs="0" ref="oldtns1:PanNumber" />
+			<xsd:element minOccurs="0" ref="oldtns1:MobileNumber" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="LoanAccountsReq"
+		type="oldtns1:t_LoanAccountsReq" />
+	<xsd:complexType name="t_LoanAccountsResp">
+		<xsd:sequence>
+			<xsd:element ref="oldtns1:LoanCount" />
+			<xsd:element ref="oldtns1:LoanFoundFlag" />
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="LoanAcDtls">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="1" minOccurs="1">
+						<xsd:element minOccurs="0" ref="oldtns1:AgreementNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:LoanCustId" />
+						<xsd:element minOccurs="0" ref="oldtns1:CBSCustID" />
+						<xsd:element minOccurs="0" ref="oldtns1:PanNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:CustomerAccountId" />
+						<xsd:element minOccurs="0" ref="oldtns1:CustomerAccountName" />
+						<xsd:element minOccurs="0" ref="oldtns1:BranchName" />
+						<xsd:element minOccurs="0" ref="oldtns1:SanctionedAmount" />
+						<xsd:element minOccurs="0" ref="oldtns1:DateOfSanctioned" />
+						<xsd:element minOccurs="0" ref="oldtns1:OutstandingAmount" />
+						<xsd:element minOccurs="0" ref="oldtns1:Currencycode" />
+						<xsd:element minOccurs="0" ref="oldtns1:AmountDisbursed" />
+						<xsd:element minOccurs="0" ref="oldtns1:AuthenticationDate" />
+						<xsd:element minOccurs="0" ref="oldtns1:TypeOfLoan" />
+						<xsd:element minOccurs="0" ref="oldtns1:MobileNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:ZipCode" />
+						<xsd:element minOccurs="0" ref="oldtns1:ConstantCode" />
+						<xsd:element minOccurs="0" ref="oldtns1:DOB" />
+						<xsd:element minOccurs="0" ref="oldtns1:PassPortNumber" />
+						<xsd:element minOccurs="0" ref="oldtns1:EmailID" />
+						<xsd:element minOccurs="0" ref="oldtns1:ProdCd" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element ibmSchExtn:docRoot="true" name="LoanAccountsResp"
+		type="oldtns1:t_LoanAccountsResp" />
+</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="subHeader">
+		<wsdl:part element="oldtns1:subHeader" name="subHeader" />
+	</wsdl:message>
+	<wsdl:message name="LoanAccounts_in">
+		<wsdl:part element="oldtns1:LoanAccountsReq" name="LoanAccountsReq" />
+	</wsdl:message>
+	<wsdl:message name="LoanAccounts_out">
+		<wsdl:part element="oldtns1:LoanAccountsResp" name="LoanAccountsResp" />
+	</wsdl:message>
+
+
+
+	<wsdl:portType name="LoanManagementMWServicePortType">
+
+		<wsdl:operation name="GetLoanAccounts">
+			<wsdl:input message="tns:LoanAccounts_in" name="LoanAccounts_Input" />
+			<wsdl:output message="tns:LoanAccounts_out" name="LoanAccounts_Output" />
+		</wsdl:operation>
+
+
+	</wsdl:portType>
+
+	<wsdl:binding name="LoanManagementMWServiceSOAP_HTTP_Binding"
+		type="tns:LoanManagementMWServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetLoanAccounts">
+			<soap:operation soapAction="" />
+			<wsdl:input name="LoanAccounts_Input">
+				<soap:body parts="LoanAccountsReq" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LoanAccounts_Output">
+				<soap:body parts="LoanAccountsResp" use="literal" />
+				<soap:header message="tns:subHeader" part="subHeader"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+
+
+	</wsdl:binding>
+
+	<wsdl:service name="LoanManagementMWService">
+		<wsdl:port binding="tns:LoanManagementMWServiceSOAP_HTTP_Binding"
+			name="LoanManagementMWServicePort">
+			<soap:address location="http://hackathon.axisbank.com:8523/LoanManagementMWService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
