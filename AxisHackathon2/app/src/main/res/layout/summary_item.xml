@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="VaishaliRestaurant4523453 534 5234 324 53"
+        android:id="@+id/list_transaction_name"
+        android:textSize="14dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_alignTop="@+id/list_transaction_image"
+        android:layout_toRightOf="@+id/list_transaction_image"
+        android:layout_toEndOf="@+id/list_transaction_image"
+        android:maxLines="1"
+        android:maxWidth="150dp"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Restaurant"
+        android:id="@+id/list_transaction_type"
+        android:textSize="12dp"
+        android:layout_alignBottom="@+id/list_transaction_image"
+        android:layout_alignLeft="@+id/list_transaction_date"
+        android:layout_alignStart="@+id/list_transaction_date"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="24-05-12"
+        android:id="@+id/list_transaction_date"
+        android:textSize="12dp"
+        android:textAlignment="gravity"
+        android:gravity="center_vertical"
+        android:textColor="@color/orange_accent"
+        android:textStyle="bold"
+        android:layout_below="@+id/list_transaction_name"
+        android:layout_alignLeft="@+id/list_transaction_name"
+        android:layout_alignStart="@+id/list_transaction_name"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Rs.10000000"
+        android:id="@+id/list_transaction_amount"
+        android:textSize="24dp"
+        android:gravity="right"
+        android:textAlignment="gravity"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:paddingBottom="20dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/list_transaction_image"
+        android:src="@drawable/chat_fox"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginTop="20dp"
+          android:background="#ffd3d3d3"
+          android:layout_below="@+id/list_transaction_type"
+          android:layout_alignRight="@+id/list_transaction_amount"
+          android:layout_alignEnd="@+id/list_transaction_amount"></View>
+
+</RelativeLayout>
