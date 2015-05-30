@@ -17,7 +17,9 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="200dp"
         android:background="#ffff8900"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:src="@drawable/summary_bg"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +39,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:maxWidth="400dp"
             android:fontFamily="sans-serif-medium"
             android:maxLines="3"
-            android:textColor="@color/white"
             android:id="@+id/tv_accNo"/>
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +50,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:maxWidth="400dp"
             android:fontFamily="sans-serif"
             android:maxLines="3"
-            android:textColor="@color/white"
             />
     </LinearLayout>
 

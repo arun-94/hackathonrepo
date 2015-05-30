@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -17,8 +17,8 @@ import android.widget.ListView;
 import com.parse.FunctionCallback;
 import com.parse.ParseCloud;
 import com.parse.ParseException;
-import com.refocus.puneet.axishackathon.AppManager;
 import com.refocus.puneet.axishackathon.Adapters.ChatArrayAdapter;
+import com.refocus.puneet.axishackathon.AppManager;
 import com.refocus.puneet.axishackathon.Classes.ChatMessage;
 import com.refocus.puneet.axishackathon.R;
 
@@ -82,15 +82,36 @@ public class ChatFragment extends Fragment
                 return false;
             }
         });
-        buttonSend.setOnClickListener(new View.OnClickListener()
+
+        buttonSend.setOnTouchListener(new View.OnTouchListener()
         {
             @Override
-            public void onClick(View arg0)
+            public boolean onTouch(View v, MotionEvent event)
             {
-                sendChatMessage();
+
+                switch (event.getAction())
+                {
+
+                    case MotionEvent.ACTION_DOWN:
+                    {
+                        buttonSend.setImageResource(R.drawable.ic_chat_send_hover);
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP:
+                    {
+                        sendChatMessage();
+                        buttonSend.setImageResource(R.drawable.ic_chat_send);
+                        break;
+                    }
+                    case MotionEvent.ACTION_CANCEL:
+                    {
+                        buttonSend.setImageResource(R.drawable.ic_chat_send);
+                        break;
+                    }
+                }
+                return true;
             }
         });
-
         listView.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
         listView.setAdapter(chatArrayAdapter);
 
@@ -105,7 +126,7 @@ public class ChatFragment extends Fragment
             }
         });
 
-        chatArrayAdapter.add(new ChatMessage(true, "Hi, I'm Axis Fox! How's it going? Let me know how I can be of assistance of you in any of your money matters!" ));
+        chatArrayAdapter.add(new ChatMessage(true, "Hi, I'm Axis Fox! How's it going? Let me know how I can be of assistance of you in any of your money matters!"));
     }
 
     private boolean sendChatMessage()
@@ -174,7 +195,8 @@ public class ChatFragment extends Fragment
                                                 {
                                                     if (resultJSON.getJSONArray("balances").getString(i).equals("Available Balance"))
                                                     {
-                                                        message += "Rs. " + Long.parseLong( resultJSON.getJSONArray("balances").getString(i+1)) + "/- ";
+                                                        String a = resultJSON.getJSONArray("balances").getString(i + 1).substring(1, resultJSON.getJSONArray("balances").getString(i + 1).length());
+                                                        message += "Rs. " + Long.parseLong(a) + "/- ";
                                                     }
                                                 }
                                                 chatArrayAdapter.add(new ChatMessage(true, message));

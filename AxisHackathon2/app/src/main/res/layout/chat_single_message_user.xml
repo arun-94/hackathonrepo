@@ -9,7 +9,8 @@
         android:id="@+id/singleMessageContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="50dp"
@@ -24,8 +25,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginRight="24dp"
             android:layout_centerVertical="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"/>
+            />
 
         <TextView
             android:id="@+id/singleMessage"
@@ -46,9 +46,8 @@
             android:paddingBottom="10dp"
             android:textSize="14dp"
             android:minWidth="100dp"
-            android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
-            android:layout_marginBottom="5dip"/>
+            />
     </RelativeLayout>
 
 </LinearLayout>

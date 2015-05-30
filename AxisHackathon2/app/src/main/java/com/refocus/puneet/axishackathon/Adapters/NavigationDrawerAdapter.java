@@ -53,8 +53,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
 
                 Name = (TextView) itemView.findViewById(R.id.name);         // Creating Text View object from header.xml for name
-                email = (TextView) itemView.findViewById(R.id.email);       // Creating Text View object from header.xml for email
-                profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
+                email = (TextView) itemView.findViewById(R.id.drawer_ac_no);       // Creating Text View object from header.xml for email
                 Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
             }
         }
@@ -121,8 +120,6 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             holder.imageView.setImageResource(mIcons[position -1]);// Settimg the image with array of our icons
         }
         else{
-
-            holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
             holder.Name.setText(name);
             holder.email.setText(email);
         }

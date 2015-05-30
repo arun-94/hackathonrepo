@@ -1,9 +1,7 @@
 package com.refocus.puneet.axishackathon.Fragments;
 
-import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,9 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.FunctionCallback;
+import com.parse.ParseCloud;
+import com.parse.ParseException;
 import com.refocus.puneet.axishackathon.Adapters.SummaryAdapter;
 import com.refocus.puneet.axishackathon.AppManager;
+import com.refocus.puneet.axishackathon.Classes.Transaction;
 import com.refocus.puneet.axishackathon.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +43,9 @@ public class SummaryFragment extends Fragment
 
     SummaryAdapter mAdapter;
     AppManager manager;
-
+    ArrayList<Transaction> transactionList = new ArrayList<>();
+    String[] paymentType = {"Restaurant", "Atm", "Shopping", "Cinema", "Travel"};
+    String[] debitType = {"Salary", "Gift", "Bonus", "Deposit"};
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -73,6 +85,7 @@ public class SummaryFragment extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        transactionList = new ArrayList<>();
     }
 
     @Override
@@ -92,8 +105,69 @@ public class SummaryFragment extends Fragment
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
-        mAdapter = new SummaryAdapter(getActivity());
+        mAdapter = new SummaryAdapter(getActivity(), transactionList);
         mRecyclerView.setAdapter(mAdapter);
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("requestDate", "2015-05-18");
+        params.put("accountId", "ACT000000000001");
+
+        ParseCloud.callFunctionInBackground("MiniStatement", params, new FunctionCallback<HashMap<String, Object>>()
+        {
+            public void done(HashMap<String, Object> result, ParseException e)
+            {
+                JSONObject resultJSON = new JSONObject(result);
+
+                if (e == null)
+                {
+                    try
+                    {
+                        for (int i = 0; i < resultJSON.getJSONArray("transactions").length(); i++)
+                        {
+                            try
+                            {
+                                JSONArray temp = resultJSON.getJSONArray("transactions");
+                                JSONArray transactionString = temp.getJSONArray(i);
+                                String amount = transactionString.getString(transactionString.length() - 1);
+                                String type = transactionString.getString(transactionString.length() - 12);
+                                char type1 = type.charAt(type.length() - 1);
+                                String date = transactionString.getString(0);
+                                String name = transactionString.getString(13);
+
+                                Random rand = new Random();
+
+                                // nextInt is normally exclusive of the top value,
+                                // so add 1 to make it inclusive
+                                if(type1 == 'C'||type1 == 'c')
+                                {
+                                    int randomNum = rand.nextInt(debitType.length);
+                                    mAdapter.addItem(new Transaction(name, date, debitType[randomNum], amount, true));
+                                }
+                                else
+                                {
+                                    int randomNum = rand.nextInt(paymentType.length);
+                                    mAdapter.addItem(new Transaction(name, date, paymentType[randomNum], amount, false));
+                                }
+                                Log.d("result:- ", amount  + date + name + type1);
+                            }
+                            catch (JSONException e1)
+                            {
+                                e1.printStackTrace();
+                            }
+                        }
+                        mAdapter = new SummaryAdapter(getActivity(), transactionList);
+                    }
+                    catch (JSONException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                }
+                else
+                {
+                    Log.d("Lematize", "Lematize error : " + e);
+                }
+            }
+        });
+
 
     }
 }

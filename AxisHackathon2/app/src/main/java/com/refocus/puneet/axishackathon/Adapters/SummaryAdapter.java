@@ -2,7 +2,6 @@ package com.refocus.puneet.axishackathon.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,32 +24,26 @@ public class SummaryAdapter extends RecyclerView.Adapter
     int count;
     int width;
 
-    public SummaryAdapter(Context applicationContext)
+    public SummaryAdapter(Context applicationContext, ArrayList<Transaction> recievedTransactions)
     {
         this.context = applicationContext;
         transactions.add(new Transaction());
+        transactions.addAll(recievedTransactions);
+        /*
         transactions.add(new Transaction("Strin", "24-4-4", "REstaurant", "Rs. 50000", true));
         transactions.add(new Transaction("Strin", "24-4-4", "REstaurant", "Rs. 50000", false));
         transactions.add(new Transaction("Strin", "24-4-4", "REstaurant", "Rs. 50000", false));
-        transactions.add(new Transaction("Strin", "24-4-4", "REstaurant", "Rs. 50000", true));
+        transactions.add(new Transaction("Strin", "24-4-4", "REstaurant", "Rs. 50000", true));*/
 
     }
 
-/*
+
     public void addItem(Transaction newVenue)
     {
-        if (count > transactions.size() - 1)
-        {
-            transactions.add(newVenue);
-            notifyItemInserted(count);
-        } else
-        {
-            transactions.set(count, newVenue);
-            notifyItemChanged(count);
-        }
-        count++;
+        transactions.add(newVenue);
+        notifyDataSetChanged();
     }
-*/
+
 
 
     @Override
@@ -79,7 +72,7 @@ public class SummaryAdapter extends RecyclerView.Adapter
         {
             if(!transaction.real)
                 ((VHHeader) viewHolder).accNo.setText("5050505050505");
-                ((VHHeader) viewHolder).balanceAmt.setText("Rs. 5000000");
+            ((VHHeader) viewHolder).balanceAmt.setText("Rs. 5000000");
         }
         else if (viewHolder instanceof VHItem)
         {
