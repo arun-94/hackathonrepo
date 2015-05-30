@@ -144,7 +144,6 @@ Parse.Cloud.define("ProcessChat", function (request, response) {
 	});
 
 	words = _.uniq(words);
-	console.log(words);
 	var result = [];
 	lemmatizer.initialize().then(
 		function (success) {
@@ -172,10 +171,27 @@ Parse.Cloud.define("ProcessChat", function (request, response) {
 				if (result.length == 1)
 					response.success(result);
 			} else {
-				result.push(0);
+				for (var i = 0; i < words.length; i++) {
+					if (words[i] == "hello") {
+						result.push(3);
+						break;
+					} else if (words[i] == "hi") {
+						result.push(3);
+						break;
+					} else if (words[i] == "whatsup") {
+						result.push(4);
+						break;
+					} else if (words[i] == "namaste") {
+						result.push(5);
+						break;
+					}
+				}
+				if (result.length == 0)
+					result.push(0);
 				response.success(result);
 			}
-		}, function (error) {
+		},
+		function (error) {
 			result.push(0);
 			response.error(result);
 		}
@@ -375,6 +391,45 @@ Parse.Cloud.define("updateDetails", function (request, response) {
 				var abcd = res.NS1Envelope.NS1Body.NS3KYCDetailResp;
 				summary.push(abcd.NS3CustomerIdentifier.text());
 				//summary.push(abcd.NS3Status.text());
+			});
+			response.success(summary);
+		},
+		error: function (httpResponse) {
+			response.error(httpResponse.message);
+		}
+	});
+});
+
+Parse.Cloud.define("InquireBill", function (request, response) {
+
+	var customerId = request.params.customerId;
+	var billId = request.params.billId;
+
+	var soap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"> <soapenv:Header> <tem:subHeader> <tem:UniqueId>INQBILL01</tem:UniqueId> <tem:ServiceRequestId>MW.HKN</tem:ServiceRequestId> <tem:ServiceRequestVersion>1.0</tem:ServiceRequestVersion> <tem:ChannelId>HKN</tem:ChannelId> </tem:subHeader> </soapenv:Header> <soapenv:Body> <tem:InquireBillRequest> <tem:InquireBillReq> <tem:CustomerId>' + customerId + '</tem:CustomerId> <tem:BillerIdentifier>' + billId + '</tem:BillerIdentifier> <tem:BillIdRefNumber></tem:BillIdRefNumber> </tem:InquireBillReq> </tem:InquireBillRequest> </soapenv:Body> </soapenv:Envelope>';
+	Parse.Cloud.httpRequest({
+		method: 'POST',
+		url: 'http://hackathon.axisbank.com:8523/BillDeskMWService',
+		headers: {
+			'Content-Type': 'text/xml'
+		},
+		body: soap,
+		success: function (httpResponse) {
+			var xmlreader = require('cloud/xml-reader.js');
+			var temp = httpResponse.text;
+			temp = temp.replace(/:/g, '');
+			var summary = [];
+			xmlreader.read(temp, function (err, res) {
+				if (err) return console.log(err);
+				var abcd = res.NS1Envelope.NS1Body.NS3InquireBillResponse;
+				summary.push(abcd.NS3ResponseCode.text());
+				summary.push(abcd.NS3ResponseDescription.text());
+				summary.push(abcd.NS3InquireBillRsp.NS3CustomerId.text());
+				summary.push(abcd.NS3InquireBillRsp.NS3BillerIdentifier.text());
+				//summary.push(abcd.NS3InquireBillRsp.NS3BillIdRefNumber.text());
+				summary.push(abcd.NS3InquireBillRsp.NS3BillStatus.text());
+				summary.push(abcd.NS3InquireBillRsp.NS3BillDate.text());
+				summary.push(abcd.NS3InquireBillRsp.NS3BillDueDate.text());
+				summary.push(abcd.NS3InquireBillRsp.NS3BillAmount.text());
 			});
 			response.success(summary);
 		},
