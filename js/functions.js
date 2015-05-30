@@ -2,7 +2,7 @@ function init() {
 	Parse.initialize("5CacqV3GaCWICl8LV19LXZ2G2JbzPmjlupfDKIte", "F5kE5mcmOy2wKS8qfRcPrRICSKdh7f3tjU8V2Qod");
 	console.log("Parse Initialized");
 
-	VerifyUserLogin();
+	updateDetails();
 }
 
 function MiniStatement() {
@@ -95,6 +95,25 @@ function MultiAccntBal() {
 	Parse.Cloud.run('MultiAccntBal', {
 		requestDate: '2015-05-18',
 		accountId: ['ACT000000000001', 'ACT000000000002']
+	}, {
+		success: function (result) {
+			console.log(result);
+		},
+		error: function (error) {
+			console.log(error);
+		}
+	});
+}
+
+function updateDetails() {
+	Parse.Cloud.run('updateDetails', {
+		coreSystem: false,
+		loanSystem: false,
+		creditSystem: false,
+		customerId: "CUST01005",
+		phoneNumber: "PHN0001",
+		mobileNumber: "MOB0002",
+		emailAddress: "EMAILID0001"
 	}, {
 		success: function (result) {
 			console.log(result);

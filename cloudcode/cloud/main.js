@@ -324,3 +324,62 @@ Parse.Cloud.define("MultiAccntBal", function (request, response) {
 		}
 	});
 });
+
+Parse.Cloud.define("updateDetails", function (request, response) {
+
+	var coreSystem = request.params.coreSystem;
+	var loanSystem = request.params.loanSystem;
+	var creditSystem = request.params.creditSystem;
+	var customerId = request.params.customerId;
+	//var accountId = request.params.accountId;
+	//var creditCardNo = request.params.creditCardNo;
+	//var loanAccId = request.params.loanAccId;
+	//var addressType = request.params.addressType;
+	//var addressLine1 = request.params.addressLine1;
+	//var addressLine2 = request.params.addressLine2;
+	//var addressLine3 = request.params.addressLine3;
+	//var addressLine4 = request.params.addressLine4;
+	//var city = request.params.city;
+	//var state = request.params.state;
+	//var zipcode = request.params.zipcode;
+	//var country = request.params.country;
+	//var mailing = request.params.mailing;
+	var phoneNumber = request.params.phoneNumber;
+	var mobileNumber = request.params.mobileNumber;
+	var emailAddress = request.params.emailAddress;
+	//var panNumber = request.params.panNumber;
+	//var aadharNumber = request.params.aadharNumber;
+	//var reasonCode = request.params.reasonCode;
+	//var countryCode = request.params.countryCode;
+	//var stdCode = request.params.stdCode;
+	//var dob = request.params.dob;
+	//var panstatus = request.params.panstatus;
+
+	//var soap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"> <soapenv:Header> <tem:subHeader> <tem:UniqueId>EKYC00001</tem:UniqueId> <tem:ServiceRequestId>MW.HKN</tem:ServiceRequestId> <tem:ServiceRequestVersion>1.0</tem:ServiceRequestVersion> <tem:ChannelId>HKN</tem:ChannelId> </tem:subHeader> </soapenv:Header> <soapenv:Body> <tem:KYCDetailReq> <tem:CoreSystem>' + coreSystem + '</tem:CoreSystem> <tem:LoanSystem>' + loanSystem + '</tem:LoanSystem> <tem:CreditSystem>' + creditSystem + '</tem:CreditSystem> <tem:CustomerIdentifier>' + customerId + '</tem:CustomerIdentifier> <!--Optional:--> <tem:creditCardNo>' + creditCardNo + '</tem:creditCardNo> <!--Optional:--> <tem:loanAccId>' + loanAccId + '</tem:loanAccId> <!--Optional:--> <tem:AddressType>' + addressType + '</tem:AddressType> <!--Optional:--> <tem:AddressLine1>' + addressLine1 + '</tem:AddressLine1> <!--Optional:--> <tem:AddressLine2>' + addressLine2 + '</tem:AddressLine2> <!--Optional:--> <tem:AddressLine3>' + addressLine3 + '</tem:AddressLine3> <!--Optional:--> <tem:AddressLine4>' + addressLine4 + '</tem:AddressLine4> <!--Optional:--> <tem:City>' + city + '</tem:City> <!--Optional:--> <tem:State>' + state + '</tem:State> <!--Optional:--> <tem:ZipCode>' + zipcode + '</tem:ZipCode> <!--Optional:--> <tem:Country>' + country + '</tem:Country> <!--Optional:--> <tem:Mailing>' + mailing + '</tem:Mailing> <!--Optional:--> <tem:PhoneNumber>' + phoneNumber + '</tem:PhoneNumber> <!--Optional:--> <tem:MobileNumber>' + mobileNumber + '</tem:MobileNumber> <!--Optional:--> <tem:EmailAddress>' + emailAddress + '</tem:EmailAddress> <!--Optional:--> <tem:PanNumber>' + panNumber + '</tem:PanNumber> <!--Optional:--> <tem:AadharNumber>' + aadharNumber + '</tem:AadharNumber> <!--Optional:--> <tem:ReasonCode>' + reasonCode + '</tem:ReasonCode> <!--Optional:--> <tem:CountryCode>' + countryCode + '</tem:CountryCode> <!--Optional:--> <tem:STDCode>' + stdCode + '</tem:STDCode> <!--Optional:--> <tem:DOB>' + dob + '</tem:DOB> <!--Optional:--> <tem:PanStatus>' + panstatus + '</tem:PanStatus> </tem:KYCDetailReq> </soapenv:Body> </soapenv:Envelope>';
+	var soap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"> <soapenv:Header> <tem:subHeader> <tem:UniqueId>EKYC00001</tem:UniqueId> <tem:ServiceRequestId>MW.HKN</tem:ServiceRequestId> <tem:ServiceRequestVersion>1.0</tem:ServiceRequestVersion> <tem:ChannelId>HKN</tem:ChannelId> </tem:subHeader> </soapenv:Header> <soapenv:Body> <tem:KYCDetailReq> <tem:CoreSystem>' + coreSystem + '</tem:CoreSystem> <tem:LoanSystem>' + loanSystem + '</tem:LoanSystem> <tem:CreditSystem>' + creditSystem + '</tem:CreditSystem> <tem:CustomerIdentifier>' + customerId + '</tem:CustomerIdentifier> <!--Optional:--> <tem:PhoneNumber>' + phoneNumber + '</tem:PhoneNumber> <!--Optional:--> <tem:MobileNumber>' + mobileNumber + '</tem:MobileNumber> <!--Optional:--> <tem:EmailAddress>' + emailAddress + '</tem:EmailAddress> </tem:KYCDetailReq> </soapenv:Body> </soapenv:Envelope>';
+
+	Parse.Cloud.httpRequest({
+		method: 'POST',
+		url: 'http://hackathon.axisbank.com:8523/eKYCMWService',
+		headers: {
+			'Content-Type': 'text/xml'
+		},
+		body: soap,
+		success: function (httpResponse) {
+			var xmlreader = require('cloud/xml-reader.js');
+			var temp = httpResponse.text;
+			temp = temp.replace(/:/g, '');
+			var summary = [];
+			xmlreader.read(temp, function (err, res) {
+				if (err) return console.log(err);
+				var abcd = res.NS1Envelope.NS1Body.NS3KYCDetailResp;
+				summary.push(abcd.NS3CustomerIdentifier.text());
+				//summary.push(abcd.NS3Status.text());
+			});
+			response.success(summary);
+		},
+		error: function (httpResponse) {
+			response.error(httpResponse.message);
+		}
+	});
+});
