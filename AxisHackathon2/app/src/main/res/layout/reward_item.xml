@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+              android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/rewardimage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/summary_bg"
+        android:scaleType="fitCenter"
+        android:layout_margin="5dp"
+        />
+    <TextView
+        android:id="@+id/rewardsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="CA01"
+        android:textSize="14sp"
+        android:textIsSelectable="false"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:paddingTop="10dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/rewardsPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="@+id/rewardsTitle"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:scrollHorizontally="true"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/purple_primary"
+        android:text="100 Points"
+        android:textSize="12sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_primary"
+        android:layout_gravity="center_horizontal"
+        android:elevation="5dp"
+        android:layout_marginTop="20dp" >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="REDEEM"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#ffffff"
+            android:padding="3dp"
+            android:background="?android:attr/selectableItemBackground"   />
+    </FrameLayout>
+
+</LinearLayout>

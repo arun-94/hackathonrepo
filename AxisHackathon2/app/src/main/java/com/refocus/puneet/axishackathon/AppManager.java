@@ -12,6 +12,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.refocus.puneet.axishackathon.Classes.BankAccount;
 
 import org.json.JSONArray;
 
@@ -25,6 +26,9 @@ import java.util.List;
 public class AppManager extends Application
 {
 
+    public String lat, lng;
+    public ArrayList<BankAccount> bankAccounts;
+    public BankAccount globalCurrentAccount;
 
     @Override
     public void onCreate()
@@ -34,6 +38,7 @@ public class AppManager extends Application
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "5CacqV3GaCWICl8LV19LXZ2G2JbzPmjlupfDKIte", "CMHWwAJzGatSsrZU9YKGDoZk2PDLnNpZSHCqCks2");
 
+        bankAccounts = new ArrayList<BankAccount>();
 
         super.onCreate();
     }

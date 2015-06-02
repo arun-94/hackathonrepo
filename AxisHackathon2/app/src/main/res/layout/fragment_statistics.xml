@@ -1,0 +1,530 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#ffff8900"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/stats_header"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/layout_balance_text"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="gravity"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="100%"
+                android:textSize="14dp"
+                android:maxWidth="400dp"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="3"
+                android:id="@+id/tv_accNo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="40000000 Rs."
+                android:id="@+id/tv_total_spent"
+                android:textSize="30dp"
+                android:maxWidth="400dp"
+                android:fontFamily="sans-serif"
+                android:maxLines="3"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/image_header"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_header"
+                android:id="@+id/layout1"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                    >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="200dp"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/backgroundLayout1"
+                                  android:background="@color/purple_primary_light">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/percentage1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:textSize="24dp"
+                        android:textIsSelectable="false"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Restaurants"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/helpDescription"
+                            android:background="#4b3d2d29"
+                            />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout2">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="200dp"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/backgroundLayout2"
+                                  android:background="@color/purple_primary_light">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/percentage2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:textSize="24dp"
+                        android:textIsSelectable="false"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cinema"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/helpDescription"
+                            android:background="#4b3d2d29"
+                            />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout3">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                    >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="200dp"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/backgroundLayout3"
+                                  android:background="@color/purple_primary_light">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/percentage3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:textSize="24dp"
+                        android:textIsSelectable="false"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Recharge"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/helpDescription"
+                            android:background="#4b3d2d29"
+                            />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout4">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                    >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="200dp"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/backgroundLayout4"
+                                  android:background="@color/purple_primary_light">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/percentage4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:textSize="24dp"
+                        android:textIsSelectable="false"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Withdrawal"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/helpDescription"
+                            android:background="#4b3d2d29"
+                            />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout5">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                    >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="200dp"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/backgroundLayout5"
+                                  android:background="@color/purple_primary_light">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/percentage5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:textSize="24dp"
+                        android:textIsSelectable="false"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shopping"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/helpDescription"
+                            android:background="#4b3d2d29"
+                            />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout6">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                    >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="200dp"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/backgroundLayout6"
+                                  android:background="@color/purple_primary_light">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/percentage6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:textSize="24dp"
+                        android:textIsSelectable="false"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="36dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"/>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Travel"
+                            android:textSize="24dp"
+                            android:textIsSelectable="false"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="36dp"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/helpDescription"
+                            android:background="#4b3d2d29"
+                            />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

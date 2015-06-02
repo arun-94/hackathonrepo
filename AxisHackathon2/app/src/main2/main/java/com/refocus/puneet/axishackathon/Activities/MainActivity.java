@@ -1,8 +1,9 @@
-package com.refocus.puneet.axishackathon;
+package com.refocus.puneet.axishackathon.Activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -16,8 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.refocus.puneet.axishackathon.Adapters.NavigationDrawerAdapter;
+import com.refocus.puneet.axishackathon.AppManager;
+import com.refocus.puneet.axishackathon.Classes.BankAccount;
 import com.refocus.puneet.axishackathon.Fragments.ChatFragment;
 import com.refocus.puneet.axishackathon.Fragments.SummaryFragment;
+import com.refocus.puneet.axishackathon.R;
+import com.refocus.puneet.axishackathon.RecyclerItemClickListener;
 
 
 public class MainActivity extends ActionBarActivity
@@ -34,8 +39,8 @@ public class MainActivity extends ActionBarActivity
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
 
-    String STORE_NAME = "I LOVE KAPDA";
-    String OWNER_EMAIL = "akash.bangad@android4devs.com";
+    String STORE_NAME = "XXXXXXXXX";
+    String OWNER_EMAIL = "ACT00000001";
     int PROFILE_IMAGE = R.mipmap.ic_launcher;
     RecyclerView mRecyclerView;                           // Declaring RecyclerView
     RecyclerView.Adapter mAdapter;                        // Declaring Adapter For Recycler View
@@ -43,6 +48,8 @@ public class MainActivity extends ActionBarActivity
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
     private Toolbar toolbar;                              // Declaring the Toolbar Object
+    AppManager manager;
+    public BankAccount currentAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,12 +57,28 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        manager = (AppManager) getApplication();
+        int position;
     /* Assinging the toolbar object ot the view
     and setting the the Action bar to our toolbar
      */
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            position = extras.getInt("Position", 0);
+        }
+        else
+        {
+            position = 0;
+        }
+        currentAccount = manager.bankAccounts.get(position);
+        STORE_NAME = currentAccount.CustomerName;
+        OWNER_EMAIL = currentAccount.AccNo;
+
+        Log.d("current", currentAccount.AccNo);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
 
@@ -95,6 +118,11 @@ public class MainActivity extends ActionBarActivity
         }; // Drawer Toggle Object Made
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
         mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, SummaryFragment.newInstance(currentAccount), "SummaryFragment")
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
 
         recyclerViewClickEvent();
     }
@@ -138,17 +166,15 @@ public class MainActivity extends ActionBarActivity
                         {
                             case 1:
                                 getFragmentManager().beginTransaction()
-                                        .replace(R.id.container, SummaryFragment.newInstance(), "AnalyticsFragment")
+                                        .replace(R.id.container, SummaryFragment.newInstance(currentAccount), "SummaryFragment")
                                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                        .addToBackStack("AnalyticsFragment")
                                         .commit();
                                 Drawer.closeDrawers();
                                 break;
                             case 2:
                                 getFragmentManager().beginTransaction()
-                                        .replace(R.id.container, ChatFragment.newInstance(), "InfoFragment")
+                                        .replace(R.id.container, ChatFragment.newInstance(), "ChatFragment")
                                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                        .addToBackStack("InfoFragment")
                                         .commit();
                                 Drawer.closeDrawers();
                                 break;
@@ -171,25 +197,28 @@ public class MainActivity extends ActionBarActivity
     public void onBackPressed()
     {
         // super.onBackPressed();
-        if(getFragmentManager().getBackStackEntryCount() > 0)
+        if (getFragmentManager().getBackStackEntryCount() > 0)
         {
-            Fragment currentFragment = getFragmentManager().findFragmentById(R.id.container);
-          /*  if (currentFragment instanceof Info_SubcategorySelectionFragment)
-            {
-                ((Info_SubcategorySelectionFragment) currentFragment).goBackToPreviousFragment();
-            }*/
+
             backEntry = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1);
+
+            getFragmentManager().getBackStackEntryCount();
             Fragment myFrag = getFragmentManager().findFragmentByTag(backEntry.getName());
-            Log.d("BackStack", "" + backEntry.getName());
+            Log.d("BackStack", "" + myFrag + " " + getFragmentManager().getBackStackEntryCount());
+            getFragmentManager().popBackStack();
             getFragmentManager().beginTransaction()
                     .replace(R.id.container, myFrag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();
-/*            if(!getSupportActionBar().isShowing())
-                getSupportActionBar().show();*/
-
         }
-        /*FragmentManager.BackStackEntry backEntry= getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount()-1);
+        else
+        {
+            Intent listIntent = new Intent(MainActivity.this, AccountSelectionActivity.class);
+            listIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(listIntent);
+            finish();
+        }/*
+        *//*FragmentManager.BackStackEntry backEntry= getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount()-1);
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         trans.replace(getApplicationContext(), backEntry);*/
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="200dp"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:id="@+id/backgroundLayout"
+                  android:background="@color/purple_primary_light">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="24dp"
+            android:textIsSelectable="false"
+            android:fontFamily="sans-serif-medium"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="36dp"/>
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/statisticsPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3%"
+        android:textSize="24dp"
+        android:textIsSelectable="false"
+        android:fontFamily="sans-serif"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              >
+
+    <TextView
+        android:id="@+id/helpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurants"
+        android:textSize="24dp"
+        android:textIsSelectable="false"
+        android:fontFamily="sans-serif-medium"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="36dp"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/helpDescription"
+        android:background="#4b3d2d29"
+        />
+
+
+</LinearLayout>
+    </RelativeLayout>

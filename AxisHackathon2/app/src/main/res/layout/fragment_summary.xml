@@ -1,3 +1,9 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:id="@+id/accountSelectionLayout"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+>
 
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -7,3 +13,38 @@
         >
 
     </android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/list_transaction_image"
+        android:layout_toStartOf="@+id/list_transaction_image"
+        android:gravity="center_vertical|clip_horizontal|center"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_centerInParent="true"
+        android:id="@+id/loading_layout">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Fetching Transactions"
+        android:textSize="16dp"
+        android:id="@+id/yolo"
+        android:maxLines="1"
+        android:layout_weight="1"
+        android:paddingBottom="20dp"
+        android:textColor="@color/purple_primary"
+        android:textStyle="bold"/>
+    <com.github.rahatarmanahmed.cpv.CircularProgressView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/progress_view_transaction"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cpv_indeterminate="true"
+        app:cpv_color="@color/purple_primary"
+        app:cpv_thickness="4dp"
+        app:cpv_animAutostart="true"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"/>
+    </LinearLayout>
+</RelativeLayout>

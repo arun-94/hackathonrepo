@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0dp"
+        android:layout_marginBottom="80dp">
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#ffcccccc">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chat with Axis Fox!"
+            android:id="@+id/editText_chat"
+            android:editable="true"
+            app:met_primaryColor="@color/purple_primary"
+            android:elegantTextHeight="false"
+            android:maxLines="4"
+            android:autoText="false"
+            android:layout_weight="1"
+            android:inputType="textMultiLine"
+            android:gravity="top|left"
+            android:minLines="1"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageButton
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:text="Send"
+            android:id="@+id/buttonSend"
+            android:layout_alignBottom="@+id/editText_chat"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_chat_send"
+            android:layout_marginRight="24dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<RelativeLayout
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/image_header"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/redeemscreenimage"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="4000000"
+        android:id="@+id/loyaltypoints"
+        android:textSize="34sp"
+        android:maxWidth="400dp"
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
+        android:maxLines="3"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Loyalty Points"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:maxWidth="400dp"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="3"
+        android:id="@+id/textView"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="89dp"/>
+
+</RelativeLayout>

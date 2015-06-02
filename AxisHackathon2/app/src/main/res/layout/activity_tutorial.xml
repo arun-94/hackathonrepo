@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.refocus.puneet.axishackathon.Activities.TutorialActivity"
+                android:background="#ff4ba7f2">
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/image_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome To"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:fontFamily="sans-serif"
+            android:id="@+id/welcometext"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="36dp"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Axis"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="62dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/white"
+                android:textSize="45dp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=" Assist"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="62dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="45dp"
+                android:fontFamily="sans-serif-light"/>
+        </LinearLayout>
+    </com.daimajia.slider.library.SliderLayout>
+
+    <FrameLayout
+        android:layout_height="wrap_content"
+        android:background="@color/purple_primary"
+        android:layout_width="275dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:id="@+id/buttonframe">
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="Summon Axis Fox!"
+            android:id="@+id/button"
+            />
+    </FrameLayout>
+
+</RelativeLayout>

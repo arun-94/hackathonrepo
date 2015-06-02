@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AxisHackathon</string>
+    <string name="app_name">Axis Assist</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
@@ -20,4 +20,6 @@
     <string name="title_activity_account_selection">AccountSelectionActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
 </resources>

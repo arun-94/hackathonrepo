@@ -1,0 +1,143 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                tools:context="com.refocus.puneet.axishackathon.Activities.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/login_gradient"
+        android:id="@+id/background"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/foreground"
+        android:src="@drawable/login_foreground"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:layout_alignParentRight="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Axis"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@color/white"
+            android:textSize="45dp"
+            android:fontFamily="sans-serif-medium"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=" Assist"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="45dp"
+            android:fontFamily="sans-serif-light"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:id="@+id/linearLayout">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="highlight"
+            app:met_underlineColor="@color/purple_primary"
+            android:hint="Customer ID"
+            app:met_floatingLabelText="Customer ID"
+            android:id="@+id/editText_custid"
+            android:editable="true"
+            app:met_primaryColor="@color/purple_primary"
+            app:met_baseColor="@color/purple_primary"
+            android:elegantTextHeight="false"
+            android:maxLines="1"
+            android:autoText="false"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:minLines="1"
+            android:inputType="text"
+            android:lines="1"
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="highlight"
+            app:met_underlineColor="@color/purple_primary"
+            android:hint="Password"
+            app:met_floatingLabelText="Password"
+            android:id="@+id/editText_password"
+            android:editable="true"
+            app:met_primaryColor="@color/purple_primary"
+            app:met_baseColor="@color/purple_primary"
+            android:elegantTextHeight="false"
+            android:maxLines="1"
+            android:autoText="false"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:minLines="1"
+            android:inputType="text"
+            android:lines="1"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_primary"
+            android:elevation="5dp"
+            android:layout_marginTop="20dp">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:id="@+id/loginButton"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                />
+
+            <com.github.rahatarmanahmed.cpv.CircularProgressView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/progress_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:cpv_indeterminate="true"
+                app:cpv_color="@color/white"
+                app:cpv_thickness="2dp"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

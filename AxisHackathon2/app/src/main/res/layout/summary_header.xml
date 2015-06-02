@@ -46,7 +46,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="40000000 Rs."
             android:id="@+id/tv_balance"
-            android:textSize="34dp"
+            android:textSize="32dp"
             android:maxWidth="400dp"
             android:fontFamily="sans-serif"
             android:maxLines="3"
@@ -56,16 +56,17 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 </RelativeLayout>
 
     <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_search"
+        android:id="@+id/button_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        fab:fab_icon="@drawable/chat_fox"
-        fab:fab_colorNormal="@color/red_error"
-        fab:fab_colorPressed="@color/red_error"
+        fab:fab_size="normal"
+        fab:fab_icon="@drawable/ic_fox_white"
+        fab:fab_colorNormal="@color/purple_primary"
+        fab:fab_colorPressed="@color/purple_primary_light"
         fab:fab_stroke_visible="false"
         android:layout_marginTop="165dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentEnd="false"
         android:layout_marginRight="16dp"/>
 
 </RelativeLayout>
